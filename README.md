@@ -43,4 +43,4 @@
 2. Select 'project-sub-directory'
 3. Import module from external model > Maven
 
-<img src="readme-images/ImportSimStadtStructure.png" alt="Import Project Structure">
+<img src="readme-images/ImportProjectStructure.png" alt="Import Project Structure">
