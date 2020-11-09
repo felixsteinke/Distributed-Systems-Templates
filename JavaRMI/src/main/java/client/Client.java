@@ -17,11 +17,11 @@ public class Client {
     public void run() {
         try {
             Registry registry = LocateRegistry.getRegistry(23456);
-            ServerInterface serverSkeleton = (ServerInterface) registry.lookup("bitch");
+            ServerInterface serverSkeleton = (ServerInterface) registry.lookup("serverName");
 
             ClientStub clientStub = new ClientStub(34567);
             serverSkeleton.storeCallback(clientStub);
-            serverSkeleton.sendString("Sub Bitch!");
+            serverSkeleton.sendString("Client: Hello Server!");
         } catch (RemoteException | NotBoundException e) {
             e.printStackTrace();
         }

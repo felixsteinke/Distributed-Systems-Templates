@@ -10,8 +10,8 @@ public class Server {
         try {
             Registry registry = LocateRegistry.createRegistry(23456);
             ServerSkeleton skeleton = new ServerSkeleton(23456);
-            registry.rebind("bitch", skeleton);
-
+            registry.rebind("serverName", skeleton);
+            System.out.println("[INFO] Server is started!");
         } catch (RemoteException e) {
             e.printStackTrace();
         }

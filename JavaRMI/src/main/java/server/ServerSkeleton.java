@@ -17,7 +17,7 @@ public class ServerSkeleton extends UnicastRemoteObject implements ServerInterfa
     @Override
     public void sendString(String string) throws RemoteException {
         System.out.println(string);
-        clientStub.call("Fuck u.");
+        clientStub.call("Server: I got ur message!.");
     }
 
     @Override
