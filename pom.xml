@@ -20,5 +20,6 @@
     <modules>
         <module>JavaRMI</module>
         <module>MultiThread_MonteCarlo</module>
+        <module>MqttController</module>
     </modules>
 </project>
