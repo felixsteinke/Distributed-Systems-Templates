@@ -2,4 +2,4 @@
 target/
 out/
 *.iml
-.*-tcpmqtteclipseorg1883/
+*-tcpmqtteclipseorg1883/
