@@ -7,7 +7,6 @@ public class Generator {
     public double scaledPositivDrops;
 
     public Generator() {
-
     }
 
     private double generateRandomNumber() {
@@ -21,7 +20,6 @@ public class Generator {
     private boolean getRandomBoolean() {
         return checkDrop(generateRandomNumber(), generateRandomNumber());
     }
-
 
     public double generatePI(double totalCount) {
         for (long i = 0; i < totalCount; i++) {

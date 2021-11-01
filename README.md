@@ -1,46 +1,47 @@
-# Verteilte-Systeme-Prototypen
+# Distributed Systems Templates
 
+## [Java RMI](JavaRMI/src/main/java)
 
-## System Bedingungen
+The [Server](JavaRMI/src/main/java/server) provides a __skeleton__ with an
+implemented [RMI Interface](JavaRMI/src/main/java/interfaces). This interface can be used from
+the [Client](JavaRMI/src/main/java/client). To use a bidirectional communication, the provides a __stub__ with the
+callback interface. With this stub the server can send its answer to the client.
 
-* Das Java-Projekt ist auf Maven aufgebaut.
-    * Java sollte installiert sein. (Vorgesehen ist 11+.)
-    * Maven sollte installiert sein.
-* Probleme könnte die Java-Version machen. Folgendes muss eventuell in der 'pom.xml' angepasst werden:
-    
-    
-        < build >
-            < plugins >
-                < plugin >
-                    < groupId>org.apache.maven.plugins</groupId >
-                    < artifactId>maven-compiler-plugin</artifactId >
-                    < configuration >
-                        < source>11</source > <-- Diese Version muss eventuell angepasst werden.
-                        < target>11</target > <-- Diese Version muss eventuell angepasst werden.
-                    < /configuration >
-                < /plugin >
-            < /plugins >
-        < /build >
+__Note:__ Watch out for the extended classes, because they are the key for RMI.
 
+## [MQTT Controller](MqttController/src/main/java/controller)
 
-## Entwicklungsumgebung für das Projekt:
+The controller show a small usage of the __publisher__ and __subscriber__ concept of MQTT. Real message driver behaviour
+needs a lot more functionality like the implementation of the simple callback.
+
+__Note:__ A really simple configuration is used.
+
+## [Multi Threading](MultiThread_MonteCarlo/src/main/java/app)
+
+A small example for multi threading is the calculation of Pi in the context of the __Monte Carlo__ problem. New issues
+like __deadlocks and race conditions__ need to be addressed in manual multi threading.
+
+## System Requirements
+
+* Maven
+* Java 11
 
 ### Maven - Installation:
 
-1. Download: https://downloads.apache.org/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.zip
-2. Entpacke die .zip-Datei
-3. Verschiebe den Maven-Ordner in den 'C:\Program Files (x86)\'-Ordner
-4. Setze die Umgebungsvariablen in 'Systemumgebungsvariablen bearbeiten > Umgebungsvariablen':
-5. Neu: 'MAVEN_HOME' = 'C:\Program Files (x86)\apache-maven-3.6.3'
-6. Bearbeiten > 'PATH' > Neu: 'C:\Program Files (x86)\apache-maven-3.6.3\bin'
-7. Test: Nutze cmd.exe: $ mvn -v
+1. Download: [Maven 3.6.3](https://downloads.apache.org/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.zip)
+2. Extract the __.zip__
+3. Move the maven directory to `C:\Program Files (x86)\`
+4. Set the __System Environment Variable__:
+5. New: `MAVEN_HOME = C:\Program Files (x86)\apache-maven-3.6.3`
+6. Edit > `PATH` > New: `%MAVEN_HOME%\bin`
+7. Test: `$ mvn -v`
 
-<img src="readme-images/SystemVariables.png" alt="System Variables">
+![System Variables](.readme-images/SystemVariables.png)
 
-### Importieren der Projektstruktur in IntelliJ:
+### Import of IntelliJ project structure:
 
 1. IntelliJ > File > Project Structure > Modules > + > Import Module
 2. Select 'project-sub-directory'
 3. Import module from external model > Maven
 
-<img src="readme-images/ImportProjectStructure.png" alt="Import Project Structure">
+![Import Project](.readme-images/ImportProjectStructure.png)

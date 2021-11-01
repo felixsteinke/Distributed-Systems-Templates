@@ -17,5 +17,4 @@ public class Application {
         endTime = System.nanoTime();
         System.out.println(endTime - startTime);
     }
-
 }

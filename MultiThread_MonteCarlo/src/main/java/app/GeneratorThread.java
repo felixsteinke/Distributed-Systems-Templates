@@ -44,7 +44,5 @@ public class GeneratorThread {
                 return pi / threads;
             }
         }
-
     }
-
 }
