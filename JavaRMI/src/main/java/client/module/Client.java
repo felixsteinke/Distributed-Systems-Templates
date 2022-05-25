@@ -1,7 +1,7 @@
-package client;
+package client.module;
 
-import interfaces.ConnectionInfo;
-import interfaces.ServerInterface;
+import interfaces.module.ConnectionInfo;
+import interfaces.module.ServerInterface;
 
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;

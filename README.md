@@ -9,6 +9,15 @@ callback interface. With this stub the server can send its answer to the client.
 
 __Note:__ Watch out for the extended classes, because they are the key for RMI.
 
+<details>
+  <summary>Class Diagram</summary>
+
+__Note:__ Modules can be independent projects where the client and server each have the interface dependency.
+
+![RMI class diagram](.readme-images/rmi-classes.png)
+
+</details>
+
 ## [MQTT Controller](MqttController/src/main/java/controller)
 
 The controller show a small usage of the __publisher__ and __subscriber__ concept of MQTT. Real message driver behaviour

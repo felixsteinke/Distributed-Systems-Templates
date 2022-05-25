@@ -1,7 +1,7 @@
-package server;
+package server.module;
 
-import interfaces.Callback;
-import interfaces.ServerInterface;
+import interfaces.module.Callback;
+import interfaces.module.ServerInterface;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;

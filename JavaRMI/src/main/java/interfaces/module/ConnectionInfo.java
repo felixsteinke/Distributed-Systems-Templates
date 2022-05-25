@@ -1,4 +1,4 @@
-package interfaces;
+package interfaces.module;
 
 public abstract class ConnectionInfo {
     public static int SERVER_PORT = 23456;
