@@ -1,17 +1,18 @@
-package controller;
+package client_module;
 
 import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttException;
+import shared_module.ConnectionInfo;
+import shared_module.SimpleCallback;
 
 public class Subscriber {
     public static void main(String[] args) {
-        String broker = "tcp://mqtt.eclipse.org:1883";
-        String topicName = "test/topic";
         try {
-            MqttClient mqttClient = new MqttClient(broker, String.valueOf(System.nanoTime()));
+            MqttClient mqttClient = new MqttClient(ConnectionInfo.BROKER_URL, String.valueOf(System.nanoTime()));
             mqttClient.setCallback(new SimpleCallback());
             mqttClient.connect();
-            mqttClient.subscribe(topicName);
+
+            mqttClient.subscribe(ConnectionInfo.TOPIC_NAME);
         } catch (MqttException e) {
             e.printStackTrace();
         }

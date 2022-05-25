@@ -1,6 +1,6 @@
-package server.module;
+package server_module;
 
-import interfaces.module.ConnectionInfo;
+import interface_module.ConnectionInfo;
 
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;

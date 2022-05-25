@@ -1,7 +1,7 @@
-package client.module;
+package client_module;
 
-import interfaces.module.ConnectionInfo;
-import interfaces.module.ServerInterface;
+import interface_module.ConnectionInfo;
+import interface_module.IServer;
 
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -17,7 +17,7 @@ public class Client {
 
     public static void main(String[] args) {
         try {
-            ServerInterface server = connectClientToServer();
+            IServer server = connectClientToServer();
             runClientTask(server);
         } catch (RemoteException | NotBoundException e) {
             logger.severe("Failed to connect Client with Server!\n");
@@ -25,16 +25,16 @@ public class Client {
         }
     }
 
-    private static ServerInterface connectClientToServer() throws RemoteException, NotBoundException {
+    private static IServer connectClientToServer() throws RemoteException, NotBoundException {
         Registry registry = LocateRegistry.getRegistry(ConnectionInfo.SERVER_PORT);
-        ServerInterface server = (ServerInterface) registry.lookup(ConnectionInfo.SERVER_NAME);
+        IServer server = (IServer) registry.lookup(ConnectionInfo.SERVER_NAME);
 
         ClientStub clientStub = new ClientStub(ConnectionInfo.CLIENT_PORT);
         server.storeCallback(clientStub);
         return server;
     }
 
-    private static void runClientTask(ServerInterface server) {
+    private static void runClientTask(IServer server) {
         ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
         scheduler.scheduleAtFixedRate(() -> {
             try {

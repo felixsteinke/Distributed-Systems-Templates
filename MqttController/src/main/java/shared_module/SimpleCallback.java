@@ -1,4 +1,4 @@
-package controller;
+package shared_module;
 
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
 import org.eclipse.paho.client.mqttv3.MqttCallback;

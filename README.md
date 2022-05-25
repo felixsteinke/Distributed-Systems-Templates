@@ -2,9 +2,9 @@
 
 ## [Java RMI](JavaRMI/src/main/java)
 
-The [Server](JavaRMI/src/main/java/server/module/Server.java) provides a __skeleton__ with an
-implemented [RMI Interface](JavaRMI/src/main/java/interfaces/module). This interface can be used from
-the [Client](JavaRMI/src/main/java/client/module/Client.java). To use a bidirectional communication, the provides a
+The [Server](JavaRMI/src/main/java/server_module/Server.java) provides a __skeleton__ with an
+implemented [RMI Interface](JavaRMI/src/main/java/interface_module). This interface can be used from
+the [Client](JavaRMI/src/main/java/client_module/Client.java). To use a bidirectional communication, the provides a
 __stub__ with the callback interface. With this stub the server can send its answer to the client.
 
 __Note:__ Watch out for the extended classes, because they are the key for RMI.
@@ -20,8 +20,8 @@ __Note:__ Modules can be independent projects where the client and server each h
 <details>
   <summary>Usage and Output</summary>
 
-1. Start [Server main()](JavaRMI/src/main/java/server/module/Server.java)
-2. Start [Client main()](JavaRMI/src/main/java/client/module/Client.java)
+1. Start [Server main()](JavaRMI/src/main/java/server_module/Server.java)
+2. Start [Client main()](JavaRMI/src/main/java/client_module/Client.java)
 
 __Server Output:__
 
@@ -45,7 +45,7 @@ Received callback: Server received the message!
 ![RMI class diagram](.readme-images/rmi-classes.png)
 </details>
 
-## [MQTT Controller](MqttController/src/main/java/controller)
+## [MQTT Controller](MqttController/src/main/java)
 
 The controller show a small usage of the __publisher__ and __subscriber__ concept of MQTT. Real message driver behaviour
 needs a lot more functionality like the implementation of the simple callback.

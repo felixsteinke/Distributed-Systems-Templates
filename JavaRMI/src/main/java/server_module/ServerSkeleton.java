@@ -1,14 +1,14 @@
-package server.module;
+package server_module;
 
-import interfaces.module.Callback;
-import interfaces.module.ServerInterface;
+import interface_module.ICallback;
+import interface_module.IServer;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
-public class ServerSkeleton extends UnicastRemoteObject implements ServerInterface {
+public class ServerSkeleton extends UnicastRemoteObject implements IServer {
 
-    private Callback clientStub;
+    private ICallback clientStub;
 
     protected ServerSkeleton(int port) throws RemoteException {
         super(port);
@@ -23,7 +23,7 @@ public class ServerSkeleton extends UnicastRemoteObject implements ServerInterfa
     }
 
     @Override
-    public void storeCallback(Callback clientStub) throws RemoteException {
+    public void storeCallback(ICallback clientStub) throws RemoteException {
         this.clientStub = clientStub;
 
         String acknowledgement = "Client is registered for callback!";
