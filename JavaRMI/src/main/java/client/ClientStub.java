@@ -12,6 +12,6 @@ public class ClientStub extends UnicastRemoteObject implements Callback {
 
     @Override
     public void call(String string) throws RemoteException {
-        System.out.println(string);
+        System.out.println("Received callback: " + string);
     }
 }

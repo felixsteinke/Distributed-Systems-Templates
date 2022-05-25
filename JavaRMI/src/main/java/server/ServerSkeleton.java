@@ -8,7 +8,7 @@ import java.rmi.server.UnicastRemoteObject;
 
 public class ServerSkeleton extends UnicastRemoteObject implements ServerInterface {
 
-    Callback clientStub;
+    private Callback clientStub;
 
     protected ServerSkeleton(int port) throws RemoteException {
         super(port);
@@ -16,12 +16,17 @@ public class ServerSkeleton extends UnicastRemoteObject implements ServerInterfa
 
     @Override
     public void sendString(String string) throws RemoteException {
-        System.out.println(string);
-        clientStub.call("Server: I got ur message!.");
+        System.out.println("Received message: " + string);
+
+        String acknowledgement = "Server received the message!";
+        clientStub.call(acknowledgement);
     }
 
     @Override
     public void storeCallback(Callback clientStub) throws RemoteException {
         this.clientStub = clientStub;
+
+        String acknowledgement = "Client is registered for callback!";
+        clientStub.call(acknowledgement);
     }
 }
