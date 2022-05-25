@@ -1,4 +1,4 @@
-# Distributed Systems Templates
+# Distributed System Demos
 
 ## [Java RMI](JavaRMI/src/main/java)
 
@@ -15,7 +15,6 @@ __Note:__ Watch out for the extended classes, because they are the key for RMI.
 __Note:__ Modules can be independent projects where the client and server each have the interface dependency.
 
 ![RMI class diagram](.readme-images/rmi-classes.png)
-
 </details>
 
 ## [MQTT Controller](MqttController/src/main/java/controller)
