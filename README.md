@@ -2,10 +2,10 @@
 
 ## [Java RMI](JavaRMI/src/main/java)
 
-The [Server](JavaRMI/src/main/java/server) provides a __skeleton__ with an
-implemented [RMI Interface](JavaRMI/src/main/java/interfaces). This interface can be used from
-the [Client](JavaRMI/src/main/java/client). To use a bidirectional communication, the provides a __stub__ with the
-callback interface. With this stub the server can send its answer to the client.
+The [Server](JavaRMI/src/main/java/server/module/Server.java) provides a __skeleton__ with an
+implemented [RMI Interface](JavaRMI/src/main/java/interfaces/module). This interface can be used from
+the [Client](JavaRMI/src/main/java/client/module/Client.java). To use a bidirectional communication, the provides a __
+stub__ with the callback interface. With this stub the server can send its answer to the client.
 
 __Note:__ Watch out for the extended classes, because they are the key for RMI.
 
