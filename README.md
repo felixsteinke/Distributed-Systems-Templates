@@ -42,7 +42,6 @@ Received callback: Server received the message!
 Received callback: Server received the message!
 ```
 
-![RMI class diagram](.readme-images/rmi-classes.png)
 </details>
 
 ## [MQTT Controller](MqttController/src/main/java)
@@ -50,7 +49,60 @@ Received callback: Server received the message!
 The controller show a small usage of the __publisher__ and __subscriber__ concept of MQTT. Real message driver behaviour
 needs a lot more functionality like the implementation of the simple callback.
 
-__Note:__ A really simple configuration is used.
+<details>
+  <summary>Class Diagram</summary>
+
+__Note:__ Modules can be independent projects.
+
+![RMI class diagram](.readme-images/mqtt-classes.png)
+</details>
+
+<details>
+  <summary>Usage and Output</summary>
+
+1. Start [Subscriber main()](MqttController/src/main/java/client_module/Subscriber.java)
+2. Start [Publisher main()](MqttController/src/main/java/server_module/Publisher.java)
+
+__Publisher Output:__
+
+```log
+Log Date Time server_module.ProducerConnection start
+INFO: Started Connection.
+Sent message: Hello! at: 1653930520109
+Sent message: Hello! at: 1653930521130
+Sent message: Hello! at: 1653930522132
+Sent message: Hello! at: 1653930523147
+Sent message: Hello! at: 1653930524159
+Sent message: Hello! at: 1653930525170
+Sent message: Hello! at: 1653930526177
+Sent message: Hello! at: 1653930527186
+Sent message: Hello! at: 1653930528190
+Sent message: Hello! at: 1653930529191
+Log Date Time server_module.ProducerConnection stop
+INFO: Stopped Connection.
+```
+
+__Subscriber Output:__
+
+```log
+Log Date Time client_module.ConsumerConnection start
+INFO: Started Connection.
+Received: Hello! at: 1653930520109
+Received: Hello! at: 1653930521130
+Received: Hello! at: 1653930522132
+Received: Hello! at: 1653930523147
+Received: Hello! at: 1653930524159
+Received: Hello! at: 1653930525170
+Received: Hello! at: 1653930526177
+Received: Hello! at: 1653930527186
+Received: Hello! at: 1653930528190
+Received: Hello! at: 1653930529191
+Received: null
+Log Date Time client_module.ConsumerConnection stop
+INFO: Stopped Connection.
+```
+
+</details>
 
 ## [Multi Threading](MultiThread_MonteCarlo/src/main/java/app)
 

@@ -1,20 +1,23 @@
 package client_module;
 
-import org.eclipse.paho.client.mqttv3.MqttClient;
-import org.eclipse.paho.client.mqttv3.MqttException;
-import shared_module.ConnectionInfo;
-import shared_module.SimpleCallback;
+import javax.jms.JMSException;
+import javax.jms.Message;
+import javax.jms.MessageConsumer;
+import javax.jms.TextMessage;
 
 public class Subscriber {
-    public static void main(String[] args) {
-        try {
-            MqttClient mqttClient = new MqttClient(ConnectionInfo.BROKER_URL, String.valueOf(System.nanoTime()));
-            mqttClient.setCallback(new SimpleCallback());
-            mqttClient.connect();
-
-            mqttClient.subscribe(ConnectionInfo.TOPIC_NAME);
-        } catch (MqttException e) {
-            e.printStackTrace();
-        }
+    public static void main(String[] args) throws JMSException {
+        ConsumerConnection connection = new ConsumerConnection();
+        MessageConsumer consumer = connection.start();
+        Message message;
+        do {
+            message = consumer.receive(10_000); // null after timeout
+            if (message instanceof TextMessage) {
+                System.out.println("Received: " + ((TextMessage) message).getText());
+            } else {
+                System.out.println("Received: " + message);
+            }
+        } while (message != null);
+        connection.stop();
     }
 }

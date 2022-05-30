@@ -1,27 +1,21 @@
 package server_module;
 
-import org.eclipse.paho.client.mqttv3.*;
-import shared_module.ConnectionInfo;
+import javax.jms.JMSException;
+import javax.jms.MessageProducer;
+import javax.jms.TextMessage;
 
 public class Publisher {
-
-    public static void main(String[] args) {
-        int qos = 1;
-        try {
-            MqttClient mqttClient = new MqttClient(ConnectionInfo.BROKER_URL, String.valueOf(System.nanoTime()));
-            MqttConnectOptions connOpts = new MqttConnectOptions();
-            connOpts.setCleanSession(true); //no persistent session
-            connOpts.setKeepAliveInterval(1000);
-
-            MqttMessage message = new MqttMessage("Ed Sheeran".getBytes());
-            message.setQos(qos);     //sets qos level 1
-            message.setRetained(true); //sets retained message
-
-            MqttTopic topic = mqttClient.getTopic(ConnectionInfo.TOPIC_NAME);
-            mqttClient.connect(connOpts); //connects the broker with connect options
-            topic.publish(message);    // publishes the message to the topic(test/topic)
-        } catch (MqttException e) {
-            e.printStackTrace();
+    public static void main(String[] args) throws JMSException, InterruptedException {
+        ProducerConnection connection = new ProducerConnection();
+        MessageProducer producer = connection.start();
+        // Create a messages
+        for (int i = 1; i <= 10; i++) {
+            String text = "Hello! at: " + System.currentTimeMillis();
+            TextMessage message = connection.produceMessage(text);
+            System.out.println("Sent message: " + text);
+            producer.send(message);
+            Thread.sleep(1000);
         }
+        connection.stop();
     }
 }
