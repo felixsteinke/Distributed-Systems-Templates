@@ -1,20 +1,21 @@
 package app;
 
-public class Application {
+import java.util.concurrent.ExecutionException;
 
-    public static void main(String[] args) {
-        Generator generator = new Generator();
+public class Application {
+    public static void main(String[] args) throws ExecutionException, InterruptedException {
+        PiGenerator generator = new PiGenerator();
 
         long startTime = System.nanoTime();
-        System.out.println(generator.generatePI(100_000_000));
+        System.out.println("Single thread result: " + generator.generatePI(100_000_000));
         long endTime = System.nanoTime();
-        System.out.println(endTime - startTime);
+        System.out.println("Single thread time: " + (endTime - startTime) / 1_000_000_000 + " seconds");
 
-        GeneratorThread generatorThread = new GeneratorThread(4);
+        PiGeneratorMultiThread generatorThread = new PiGeneratorMultiThread(2);
 
         startTime = System.nanoTime();
-        System.out.println(generatorThread.generatePi(100_000_000));
+        System.out.println("Multi thread result: " + generatorThread.generatePi(100_000_000));
         endTime = System.nanoTime();
-        System.out.println(endTime - startTime);
+        System.out.println("Multi thread time: " + (endTime - startTime) / 1_000_000_000 + " seconds");
     }
 }
