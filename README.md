@@ -172,7 +172,7 @@ __System Requirements:__
 
 1. Download: [Java 11+](https://www.oracle.com/java/technologies/javase/jdk11-archive-downloads.html)
 2. Install the executable
-3. Set [System Environment Variables](.readme-images/SystemVariables.png):
+3. Set [System Environment Variables](.readme-images/system-environment-guide.png):
 4. New: `JAVA_HOME` = `C:\Program Files\Java\jdk-11`
 5. Edit > `PATH` > New: `%JAVA_HOME%\bin`
 6. Test command: `java -version`
@@ -181,7 +181,7 @@ __System Requirements:__
 
 1. Download: [Maven 3.6.3+](https://maven.apache.org/download.cgi)
 2. Unzip it to: `C:\Program Files\maven`
-3. Set [System Environment Variables](.readme-images/SystemVariables.png):
+3. Set [System Environment Variables](.readme-images/system-environment-guide.png):
 4. New: `MAVEN_HOME` = `C:\Program Files\maven`
 5. Edit > `PATH` > New: `%MAVEN_HOME%\bin`
 6. Test: `$ mvn -v`
@@ -190,7 +190,7 @@ __System Requirements:__
 
 1. Download: [ActiveMQ 5.17+](https://activemq.apache.org/components/classic/download/)
 2. Unzip it to: `C:\Program Files\activemq`
-3. Set [System Environment Variables](.readme-images/SystemVariables.png):
+3. Set [System Environment Variables](.readme-images/system-environment-guide.png):
 4. Edit > `PATH` > New: `C:\Program Files\activemq\bin`
 5. Test command: `activemq start`
 6. Admin page: [http://localhost:8161/admin](http://localhost:8161/admin) with `admin`, `admin` credentials.
