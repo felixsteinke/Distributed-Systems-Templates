@@ -122,6 +122,50 @@ __System Requirements:__
 A small example for multi threading is the calculation of Pi in the context of the __Monte Carlo__ problem. New issues
 like __deadlocks and race conditions__ need to be addressed in manual multi threading.
 
+<details>
+  <summary>Usage and Output</summary>
+
+1. Start [Application main()](MultiThread_MonteCarlo/src/main/java/app/Application.java)
+
+__Note:__ The example was done with compromised processor configuration.
+
+__Output:__
+
+```log
+INFO: Calculate 1.0E8 drops in circle.
+INFO: Calculated pi: 3.1414568
+
+Single thread result: 3.1414568
+Single thread time: 7.5117718 seconds
+
+INFO: Submitted job: 1
+INFO: Submitted job: 2
+INFO: Calculate 2.5E7 drops in circle.
+INFO: Calculate 2.5E7 drops in circle.
+INFO: Submitted job: 3
+INFO: Submitted job: 4
+INFO: Calculate 2.5E7 drops in circle.
+INFO: Calculate 2.5E7 drops in circle.
+INFO: Calculated pi: 3.14164704
+INFO: Joined result: 1
+INFO: Calculated pi: 3.14135488
+INFO: Joined result: 2
+INFO: Calculated pi: 3.14119488
+INFO: Joined result: 3
+INFO: Calculated pi: 3.14165968
+INFO: Joined result: 4
+
+Multi thread result: 3.14146412
+Multi thread time: 36.5720642 seconds
+```
+
+</details>
+
+__System Requirements:__
+
+* Java
+* Maven
+
 ## System Requirements
 
 ### Java 11

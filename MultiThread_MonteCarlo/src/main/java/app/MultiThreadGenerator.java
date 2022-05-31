@@ -2,29 +2,28 @@ package app;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.CompletionService;
-import java.util.concurrent.ExecutorCompletionService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
+import java.util.concurrent.*;
 import java.util.logging.Logger;
 
-public class PiGeneratorMultiThread {
-    private static final Logger logger = Logger.getLogger(PiGeneratorMultiThread.class.getName());
+public class MultiThreadGenerator {
+    private static final Logger logger = Logger.getLogger(MultiThreadGenerator.class.getName());
     private final int threads;
-    private final CompletionService<Double> service;
+    private CompletionService<Double> service;
 
 
-    public PiGeneratorMultiThread(int threads) {
+    public MultiThreadGenerator(int threads) {
         this.threads = threads;
-        this.service = new ExecutorCompletionService<>(Executors.newFixedThreadPool(threads));
     }
 
     public double generatePi(double totalCount) throws InterruptedException {
+        ExecutorService executor = Executors.newFixedThreadPool(threads);
+        service = new ExecutorCompletionService<>(executor);
         submitMultiThreadGenerator(totalCount, threads);
         double pi = 0;
         for (double partialResult : joinMultiThreadResult(threads)) {
             pi += partialResult;
         }
+        executor.shutdown();
         return pi / threads;
     }
 
@@ -46,14 +45,7 @@ public class PiGeneratorMultiThread {
     private void submitMultiThreadGenerator(double totalCount, int threads) {
         for (int i = 1; i <= threads; i++) {
             logger.info("Submitted job: " + i);
-            submitPartialGenerator(totalCount / threads);
+            service.submit(() -> MonteCarloGenerator.generatePi(totalCount / threads));
         }
-    }
-
-    private void submitPartialGenerator(double partialCount) {
-        service.submit(() -> {
-            PiGenerator generator = new PiGenerator();
-            return generator.generatePI(partialCount);
-        });
     }
 }
