@@ -4,8 +4,8 @@
 
 The [Server](JavaRMI/src/main/java/server_module/Server.java) provides a __skeleton__ with an
 implemented [RMI Interface](JavaRMI/src/main/java/interface_module). This interface can be used from
-the [Client](JavaRMI/src/main/java/client_module/Client.java). To use a bidirectional communication, the provides a
-__stub__ with the callback interface. With this stub the server can send its answer to the client.
+the [Client](JavaRMI/src/main/java/client_module/Client.java). To use a bidirectional communication, the client provides
+a __stub__ with the callback interface. With this stub the server can send its answer to the client.
 
 __Note:__ Watch out for the extended classes, because they are the key for RMI.
 
@@ -44,10 +44,16 @@ Received callback: Server received the message!
 
 </details>
 
+__System Requirements:__
+
+* Java
+* Maven
+
 ## [MQTT Controller](MqttController/src/main/java)
 
-The controller show a small usage of the __publisher__ and __subscriber__ concept of MQTT. Real message driver behaviour
-needs a lot more functionality like the implementation of the simple callback.
+The controller show a small usage of the [Publisher](MqttController/src/main/java/server_module/Publisher.java) and
+[Subscriber](MqttController/src/main/java/client_module/Subscriber.java) concept of MQTT. The communication goes over a
+topic on a ActiveMQ Broker.
 
 <details>
   <summary>Class Diagram</summary>
@@ -60,8 +66,9 @@ __Note:__ Modules can be independent projects.
 <details>
   <summary>Usage and Output</summary>
 
-1. Start [Subscriber main()](MqttController/src/main/java/client_module/Subscriber.java)
-2. Start [Publisher main()](MqttController/src/main/java/server_module/Publisher.java)
+1. Run `activemq start`
+2. Start [Subscriber main()](MqttController/src/main/java/client_module/Subscriber.java)
+3. Start [Publisher main()](MqttController/src/main/java/server_module/Publisher.java)
 
 __Publisher Output:__
 
@@ -104,6 +111,12 @@ INFO: Stopped Connection.
 
 </details>
 
+__System Requirements:__
+
+* Java
+* Maven
+* ActiveMQ
+
 ## [Multi Threading](MultiThread_MonteCarlo/src/main/java/app)
 
 A small example for multi threading is the calculation of Pi in the context of the __Monte Carlo__ problem. New issues
@@ -111,25 +124,30 @@ like __deadlocks and race conditions__ need to be addressed in manual multi thre
 
 ## System Requirements
 
-* Maven
-* Java 11
+### Java 11
 
-### Maven - Installation:
+1. Download: [Java 11+](https://www.oracle.com/java/technologies/javase/jdk11-archive-downloads.html)
+2. Install the executable
+3. Set [System Environment Variables](.readme-images/SystemVariables.png):
+4. New: `JAVA_HOME` = `C:\Program Files\Java\jdk-11`
+5. Edit > `PATH` > New: `%JAVA_HOME%\bin`
+6. Test command: `java -version`
 
-1. Download: [Maven 3.6.3](https://downloads.apache.org/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.zip)
-2. Extract the __.zip__
-3. Move the maven directory to `C:\Program Files (x86)\`
-4. Set the __System Environment Variable__:
-5. New: `MAVEN_HOME = C:\Program Files (x86)\apache-maven-3.6.3`
-6. Edit > `PATH` > New: `%MAVEN_HOME%\bin`
-7. Test: `$ mvn -v`
+### Maven
 
-![System Variables](.readme-images/SystemVariables.png)
+1. Download: [Maven 3.6.3+](https://maven.apache.org/download.cgi)
+2. Unzip it to: `C:\Program Files\maven`
+3. Set [System Environment Variables](.readme-images/SystemVariables.png):
+4. New: `MAVEN_HOME` = `C:\Program Files\maven`
+5. Edit > `PATH` > New: `%MAVEN_HOME%\bin`
+6. Test: `$ mvn -v`
 
-### Import of IntelliJ project structure:
+### ActiveMQ
 
-1. IntelliJ > File > Project Structure > Modules > + > Import Module
-2. Select 'project-sub-directory'
-3. Import module from external model > Maven
+1. Download: [ActiveMQ 5.17+](https://activemq.apache.org/components/classic/download/)
+2. Unzip it to: `C:\Program Files\activemq`
+3. Set [System Environment Variables](.readme-images/SystemVariables.png):
+4. Edit > `PATH` > New: `C:\Program Files\activemq\bin`
+5. Test command: `activemq start`
+6. Admin page: [http://localhost:8161/admin](http://localhost:8161/admin) with `admin`, `admin` credentials.
 
-![Import Project](.readme-images/ImportProjectStructure.png)
