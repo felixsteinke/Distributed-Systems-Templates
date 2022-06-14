@@ -166,6 +166,86 @@ __System Requirements:__
 * Java
 * Maven
 
+## [REST API](REST_API/src/main/java/com/mono/api)
+
+Monolithic REST API for a shop with `Spring Boot`.
+
+|               Table of Content                |
+|:---------------------------------------------:|
+| [code](REST_API/src/main/java/com/mono/api)  |
+| [configuration](REST_API/src/main/resources)  |
+|       [dependencies](REST_API/pom.xml)        |
+| [docker compose](REST_API/docker-compose.yml) |
+
+<details>
+  <summary>Class Diagram</summary>
+
+__Note:__ Names might have changed.
+
+![Monolithic class diagram](.readme-images/monolithic-classes.png)
+</details>
+
+<details>
+  <summary>Usage</summary>
+
+1. Start Application
+   * by run [ShopApplication main()](REST_API/src/main/java/com/mono/api/ShopApplication.java)
+   * by command `docker-compose up`
+2. Open API Documentation on [http://localhost:8080/swagger-ui/](http://localhost:8080/swagger-ui/)
+
+</details>
+
+__System Requirements:__
+
+* Java
+* Maven
+* ActiveMQ
+* MySQL
+* (Docker)
+
+## [REST Microservices](REST_Microservices)
+
+Microservices for a shop with `Spring Boot`.
+Transformed from the monolithic REST-API.
+Service Modules are as independent as possible.
+
+| Service                                                 | Code                                                                           | Configuration                                                          |
+|:--------------------------------------------------------|:-------------------------------------------------------------------------------|:-----------------------------------------------------------------------|
+| [Abo Module](REST_Microservices/AboService)             | [Abo Code](REST_Microservices/AboService/src/main/java/com/micro/shop)         | [Abo Config](REST_Microservices/AboService/src/main/resources)         |
+| [Cart Module](REST_Microservices/CartService)           | [Cart Code](REST_Microservices/CartService/src/main/java/com/micro/shop)       | [Cart Config](REST_Microservices/CartService/src/main/resources)       |
+| [Payment Module](REST_Microservices/PaymentService)     | [Payment Code](REST_Microservices/PaymentService/src/main/java/com/micro/shop) | [Payment Config](REST_Microservices/PaymentService/src/main/resources) |
+| [Product Module](REST_Microservices/ProductService)     | [Product Code](REST_Microservices/ProductService/src/main/java/com/micro/shop) | [Product Config](REST_Microservices/ProductService/src/main/resources) |
+| [API Gateway Module](REST_Microservices/ApiGateway)     | [API Gateway Code](REST_Microservices/ApiGateway/src/main/java/com/micro/shop) | [API Gateway Config](REST_Microservices/ApiGateway/src/main/resources) |
+| [docker compose](REST_Microservices/docker-compose.yml) |                                                                                |                                                                        |     
+
+<details>
+  <summary>Class Diagram</summary>
+
+__Note:__ Diagram of only one service to display the pattern.
+
+![Microservice class diagram](.readme-images/microservice-classes.png)
+</details>
+
+<details>
+  <summary>Usage</summary>
+
+1. Start Microservice Cluster with `docker-compose up`
+2. Open Service API Documentations
+   * [http://localhost:8080/product/swagger-ui/](http://localhost:8080/product/swagger-ui/)
+   * [http://localhost:8080/cart/swagger-ui/](http://localhost:8080/cart/swagger-ui/)
+   * [http://localhost:8080/abo/swagger-ui/](http://localhost:8080/abo/swagger-ui/)
+   * [http://localhost:8080/payment/swagger-ui/](http://localhost:8080/payment/swagger-ui/)
+
+</details>
+
+__System Requirements:__
+
+* Java
+* Maven
+* ActiveMQ
+* MySQL
+* Docker
+
 ## System Requirements
 
 ### Java 11
@@ -195,3 +275,14 @@ __System Requirements:__
 5. Test command: `activemq start`
 6. Admin page: [http://localhost:8161/admin](http://localhost:8161/admin) with `admin`, `admin` credentials.
 
+### MySQL
+
+1. Download: [MySQL 8 Server](https://dev.mysql.com/downloads/installer/)
+2. Install the executable
+3. Select `Server only`
+4. Default `root` password: `password` (not for productive DB!)
+
+### Docker
+
+1. Download: [Docker Desktop](https://www.docker.com/products/docker-desktop)
+2. Install the executable

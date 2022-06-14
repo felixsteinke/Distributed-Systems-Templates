@@ -1,0 +1,47 @@
+version: '3'
+
+services:
+
+  # https://medium.com/@chrischuck35/how-to-create-a-mysql-instance-with-docker-compose-1598f3cc1bee
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    restart: on-failure
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+    volumes:
+      - mysql:/var/lib/mysql
+
+  # https://github.com/daggerok/spring-boot-rest-jms-activemq/blob/master/spring-jms-docker-activemq/docker-compose.yml
+  activemq:
+    image: webcenter/activemq:5.14.3
+    container_name: activemq
+    restart: on-failure
+    environment:
+      ACTIVEMQ_ADMIN_LOGIN: admin
+      ACTIVEMQ_ADMIN_PASSWORD: admin
+    volumes:
+      - activemq:/opt/activemq/conf
+      - activemq:/data/activemq
+      - activemq:/var/log/activemq
+
+  mono-webshop:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: mono-shop:latest
+    container_name: mono-shop
+    restart: on-failure
+    depends_on:
+      - mysql
+      - activemq
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/mono_shop?createDatabaseIfNotExist=true
+      - SPRING_ACTIVEMQ_BROKER-URL=tcp://activemq:61616
+    ports:
+      - "8080:8080"
+
+volumes:
+  mysql:
+  activemq:
+

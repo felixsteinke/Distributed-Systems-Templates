@@ -1,0 +1,29 @@
+#=============================
+#= ENDPOINTS
+#==============================
+server:
+  port: 8080
+#=============================
+#= SPRING CLOUD
+#==============================
+spring:
+  cloud:
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+#=============================
+#= GATEWAY
+#==============================
+gateway:
+  api:
+    product-url: "localhost:8085"
+    payment-url: "localhost:8082"
+    abo-url: "localhost:8083"
+    cart-url: "localhost:8084"

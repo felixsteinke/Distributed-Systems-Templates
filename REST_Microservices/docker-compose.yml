@@ -1,0 +1,136 @@
+version: '3'
+
+services:
+
+  # https://medium.com/@chrischuck35/how-to-create-a-mysql-instance-with-docker-compose-1598f3cc1bee
+  mysql-micro:
+    image: mysql:8.0
+    container_name: mysql-micro
+    restart: on-failure
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+    networks:
+      - database
+    volumes:
+      - mysql:/var/lib/mysql
+
+  # https://github.com/daggerok/spring-boot-rest-jms-activemq/blob/master/spring-jms-docker-activemq/docker-compose.yml
+  activemq-micro:
+    image: webcenter/activemq:5.14.3
+    container_name: activemq-micro
+    restart: on-failure
+    environment:
+      ACTIVEMQ_ADMIN_LOGIN: admin
+      ACTIVEMQ_ADMIN_PASSWORD: admin
+    networks:
+      - messaging
+    volumes:
+      - activemq:/opt/activemq/conf
+      - activemq:/data/activemq
+      - activemq:/var/log/activemq
+
+  product-service:
+    build:
+      context: ./ProductService
+      dockerfile: Dockerfile
+    image: product-service:latest
+    container_name: product-service
+    restart: on-failure
+    depends_on:
+      - mysql-micro
+    environment:
+      - SERVER_PORT=8080
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql-micro:3306/micro_product?createDatabaseIfNotExist=true
+    networks:
+      - database
+      - api
+
+  payment-service:
+    build:
+      context: ./PaymentService
+      dockerfile: Dockerfile
+    image: payment-service:latest
+    container_name: payment-service
+    restart: on-failure
+    depends_on:
+      - activemq-micro
+    environment:
+      - SERVER_PORT=8080
+      - SPRING_ACTIVEMQ_BROKER-URL=tcp://activemq-micro:61616
+    networks:
+      - messaging
+      - api
+
+  abo-service:
+    build:
+      context: ./AboService
+      dockerfile: Dockerfile
+    image: abo-service:latest
+    container_name: abo-service
+    restart: on-failure
+    depends_on:
+      - product-service
+      - activemq-micro
+      - mysql-micro
+    environment:
+      - SERVER_PORT=8080
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql-micro:3306/micro_abo?createDatabaseIfNotExist=true
+      - CONSUMER_API-CLIENT_PRODUCT-URL=http://product-service:8080/product
+      - SPRING_ACTIVEMQ_BROKER-URL=tcp://activemq-micro:61616
+    networks:
+      - messaging
+      - api
+      - database
+
+  cart-service:
+    build:
+      context: ./CartService
+      dockerfile: Dockerfile
+    image: cart-service:latest
+    container_name: cart-service
+    restart: on-failure
+    depends_on:
+      - product-service
+      - abo-service
+    environment:
+      - SERVER_PORT=8080
+      - CONSUMER_API-CLIENT_PRODUCT-URL=http://product-service:8080/product
+      - CONSUMER_API-CLIENT_ABO-URL=http://abo-service:8080/abo
+      - CONSUMER_API-CLIENT_MAX-BLOCK-MS=3000
+    networks:
+      - api
+
+  api-gateway:
+    build:
+      context: ./ApiGateway
+      dockerfile: Dockerfile
+    image: api-gateway:latest
+    container_name: api-gateway
+    restart: on-failure
+    depends_on:
+      - product-service
+      - payment-service
+      - abo-service
+      - cart-service
+    environment:
+      - SERVER_PORT=8080
+      - GATEWAY_API_PRODUCT-URL=http://product-service:8080
+      - GATEWAY_API_PAYMENT-URL=http://payment-service:8080
+      - GATEWAY_API_ABO-URL=http://abo-service:8080
+      - GATEWAY_API_CART-URL=http://cart-service:8080
+    networks:
+      - api
+    ports:
+      - "8080:8080"
+    expose:
+      - 8080
+
+networks:
+  messaging:
+  database:
+  api:
+
+volumes:
+  mysql:
+  activemq:
+
