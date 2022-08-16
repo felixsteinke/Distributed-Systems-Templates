@@ -1,6 +1,6 @@
-package com.mono.api.cart.access;
+package com.mono.api.cart;
 
-import com.mono.api.product.access.Product;
+import com.mono.api.product.Product;
 
 public class CartItem {
 

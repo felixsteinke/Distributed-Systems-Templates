@@ -17,9 +17,11 @@ import javax.jms.ConnectionFactory;
  * <h2>Spring Application Config</h2>
  * Spring JMS can send/receive messages both synchronously and asynchronously.
  * The connector to ActiveMQ needs to be configured in the beginning.
- * <p>Tutorial: https://www.baeldung.com/spring-bean-vs-ejb</p>
+ * It provides Bean Configurations for JMS and constants for the communication.
+ *
+ * <p><a href="https://www.baeldung.com/spring-bean-vs-ejb">Tutorial</a></p>
  * <p>Important: Start the broker (cmd: activemq start)</p>
- * <p>https://memorynotfound.com/spring-boot-embedded-activemq-configuration-example/</p>
+ * <p><a href="https://memorynotfound.com/spring-boot-embedded-activemq-configuration-example/">ActiveMQ</a></p>
  */
 @Configuration
 @EnableJms

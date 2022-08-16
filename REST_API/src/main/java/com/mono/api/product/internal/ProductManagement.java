@@ -1,7 +1,7 @@
 package com.mono.api.product.internal;
 
-import com.mono.api.product.access.Product;
-import com.mono.api.product.access.ProductSelector;
+import com.mono.api.product.Product;
+import com.mono.api.product.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
-public class ProductManagement implements ProductSelector {
+public class ProductManagement implements ProductService {
 
     private final ProductRepo productRepo;
 
@@ -19,7 +19,9 @@ public class ProductManagement implements ProductSelector {
     }
 
     public Product addProduct(Product product) {
-        return new Product(productRepo.save(new ProductEntity(product)));
+        ProductEntity input = ProductMapper.entity(product);
+        ProductEntity newEntity = productRepo.save(input);
+        return ProductMapper.model(newEntity);
     }
 
     public void deleteProduct(Integer productNr) {
@@ -27,11 +29,13 @@ public class ProductManagement implements ProductSelector {
     }
 
     public List<Product> getAllProducts() {
-        return productRepo.findAll().stream().map(Product::new).collect(Collectors.toList());
+        List<ProductEntity> table = productRepo.findAll();
+        return table.stream().map(ProductMapper::model).collect(Collectors.toList());
     }
 
     @Override
     public Product getProduct(Integer productNr) {
-        return new Product(productRepo.findById(productNr).orElseThrow());
+        ProductEntity entity = productRepo.findById(productNr).orElseThrow();
+        return ProductMapper.model(entity);
     }
 }

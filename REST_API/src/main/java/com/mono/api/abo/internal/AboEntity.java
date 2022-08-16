@@ -1,13 +1,22 @@
 package com.mono.api.abo.internal;
 
-import com.mono.api.product.access.Product;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.Objects;
 
-@Entity
-@Table(name = "abos")
-public class AboEntity {
+/**
+ * Database Access Object (DAO).
+ * <p>Package private and managed by the {@link AboManagement} and {@link AboMapper}.</p>
+ */
+@Entity // jpa entity configuration
+@Table(name = "abos") // jpa table configuration
+@NoArgsConstructor // lombok default constructor
+@Getter // lombok generates getter for all fields
+@ToString // lombok generates toString including all fields
+class AboEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,50 +35,24 @@ public class AboEntity {
     @Column(name = "payed")
     private Boolean payed;
 
-    public AboEntity() {
+    public AboEntity setProductNr(Integer productNr) {
+        this.productNr = productNr;
+        return this;
     }
 
-    public AboEntity(Product product) {
-        this.productNr = product.getNr();
-        this.productName = product.getName();
-        this.price = product.getPrice();
-        this.payed = false;
+    public AboEntity setProductName(String productName) {
+        this.productName = productName;
+        return this;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public Integer getProductNr() {
-        return productNr;
-    }
-
-    public String getProductName() {
-        return productName;
-    }
-
-    public Float getPrice() {
-        return price;
-    }
-
-    public Boolean getPayed() {
-        return payed;
+    public AboEntity setPrice(Float price) {
+        this.price = price;
+        return this;
     }
 
     public AboEntity setPayed(Boolean payed) {
         this.payed = payed;
         return this;
-    }
-
-    @Override
-    public String toString() {
-        return "AboEntity{" +
-                "id=" + id +
-                ", productNr=" + productNr +
-                ", productName='" + productName + '\'' +
-                ", price=" + price +
-                ", payed=" + payed +
-                '}';
     }
 
     @Override

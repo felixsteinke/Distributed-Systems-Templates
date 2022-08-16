@@ -1,6 +1,5 @@
 package com.mono.api.cart;
 
-import com.mono.api.cart.access.CartItem;
 import com.mono.api.cart.internal.CartManagement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -9,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-// TODO convert to Stateful Bean
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/cart")

@@ -1,6 +1,9 @@
 package com.mono.api.product.internal;
 
-import com.mono.api.product.access.Product;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,9 +11,17 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Objects;
 
-@Entity
-@Table(name = "products")
-public class ProductEntity {
+/**
+ * Database Access Object (DAO).
+ * <p>Package private and managed by the {@link ProductManagement} and {@link ProductMapper}.</p>
+ */
+@Entity // jpa entity configuration
+@Table(name = "products") // jpa table configuration
+@NoArgsConstructor // lombok default constructor - required for jpa entities
+@Getter // lombok generates getter for all fields
+@Setter // lombok generates setter for all fields
+@ToString // lombok generates toString including all fields
+class ProductEntity {
 
     @Id
     @Column(name = "nr")
@@ -21,36 +32,6 @@ public class ProductEntity {
 
     @Column(name = "price")
     private Float price;
-
-    public ProductEntity() {
-    }
-
-    public ProductEntity(Product product) {
-        this.nr = product.getNr();
-        this.name = product.getName();
-        this.price = product.getPrice();
-    }
-
-    public Integer getNr() {
-        return nr;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public Float getPrice() {
-        return price;
-    }
-
-    @Override
-    public String toString() {
-        return "ProductEntity{" +
-                "nr=" + nr +
-                ", name='" + name + '\'' +
-                ", price=" + price +
-                '}';
-    }
 
     @Override
     public boolean equals(Object o) {

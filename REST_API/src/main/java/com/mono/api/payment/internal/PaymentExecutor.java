@@ -3,7 +3,7 @@ package com.mono.api.payment.internal;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mono.api.MessageConfig;
-import com.mono.api.payment.access.PaymentOrder;
+import com.mono.api.payment.PaymentOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.jms.core.JmsTemplate;

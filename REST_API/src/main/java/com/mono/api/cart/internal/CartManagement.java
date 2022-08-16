@@ -1,25 +1,28 @@
 package com.mono.api.cart.internal;
 
-import com.mono.api.abo.access.AboCreator;
-import com.mono.api.cart.access.CartItem;
-import com.mono.api.product.access.ProductSelector;
+import com.mono.api.abo.AboService;
+import com.mono.api.cart.CartItem;
+import com.mono.api.product.Product;
+import com.mono.api.product.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.context.annotation.SessionScope;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Component
+@SessionScope
 public class CartManagement {
 
     private final List<CartItem> CART = new ArrayList<>();
-    private final AboCreator aboCreator;
-    private final ProductSelector productSelector;
+    private final AboService aboService;
+    private final ProductService productService;
 
     @Autowired
-    public CartManagement(AboCreator aboCreator, ProductSelector productSelector) {
-        this.aboCreator = aboCreator;
-        this.productSelector = productSelector;
+    public CartManagement(AboService aboService, ProductService productService) {
+        this.aboService = aboService;
+        this.productService = productService;
     }
 
     public List<CartItem> getCart() {
@@ -27,11 +30,12 @@ public class CartManagement {
     }
 
     public void addToCart(Integer productNr) {
-        CART.add(new CartItem(productSelector.getProduct(productNr), 1));
+        Product input = productService.getProduct(productNr);
+        CART.add(new CartItem(input, 1)); // count as placeholder for more flexibility
     }
 
     public void checkoutCart() {
-        CART.forEach(item -> aboCreator.addAbo(item.getProduct().getNr()));
+        CART.forEach(item -> aboService.addAbo(item.getProduct().getNr()));
         this.resetCart();
     }
 

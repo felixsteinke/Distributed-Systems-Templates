@@ -1,6 +1,5 @@
 package com.mono.api.abo;
 
-import com.mono.api.abo.access.Abo;
 import com.mono.api.abo.internal.AboManagement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;

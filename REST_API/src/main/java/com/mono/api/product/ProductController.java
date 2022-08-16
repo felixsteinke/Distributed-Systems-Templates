@@ -1,6 +1,5 @@
 package com.mono.api.product;
 
-import com.mono.api.product.access.Product;
 import com.mono.api.product.internal.ProductManagement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
