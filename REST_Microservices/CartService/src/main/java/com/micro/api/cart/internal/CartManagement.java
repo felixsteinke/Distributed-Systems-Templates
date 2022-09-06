@@ -6,13 +6,12 @@ import com.micro.api.external.IProductService;
 import com.micro.api.external.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.web.context.annotation.SessionScope;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Component
-@SessionScope
+//@SessionScope TODO should be stateful
 public class CartManagement {
 
     private final List<CartItem> CART = new ArrayList<>();

@@ -8,6 +8,6 @@ RUN npm run build # -> ng build --prod
 FROM nginx:1.21-alpine AS runner
 
 COPY nginx.conf /etc/nginx/nginx.conf
-COPY --from=builder /src/app/dist/Webshop-Frontend /usr/share/nginx/html
+COPY --from=builder /src/app/dist/client-ui /usr/share/nginx/html
 
 EXPOSE 4200

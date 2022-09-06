@@ -212,18 +212,17 @@ __System Requirements:__
 
 ## 📂 [REST Microservices](REST_Microservices)
 
-Microservices for an application with `Spring Boot`.
-Transformed from the monolithic REST-API.
-Service Modules are as independent as possible.
+Microservices for an application with `Spring Boot`. Transformed from the monolithic REST-API. Service Modules are as
+independent as possible.
 
-| Service                                                 | Code                                                                           | Configuration                                                          |
-|:--------------------------------------------------------|:-------------------------------------------------------------------------------|:-----------------------------------------------------------------------|
-| [Abo Module](REST_Microservices/AboService)             | [Abo Code](REST_Microservices/AboService/src/main/java/com/micro/api)         | [Abo Config](REST_Microservices/AboService/src/main/resources)         |
-| [Cart Module](REST_Microservices/CartService)           | [Cart Code](REST_Microservices/CartService/src/main/java/com/micro/api)       | [Cart Config](REST_Microservices/CartService/src/main/resources)       |
-| [Payment Module](REST_Microservices/PaymentService)     | [Payment Code](REST_Microservices/PaymentService/src/main/java/com/micro/api) | [Payment Config](REST_Microservices/PaymentService/src/main/resources) |
-| [Product Module](REST_Microservices/ProductService)     | [Product Code](REST_Microservices/ProductService/src/main/java/com/micro/api) | [Product Config](REST_Microservices/ProductService/src/main/resources) |
-| [API Gateway Module](REST_Microservices/ApiGateway)     | [API Gateway Code](REST_Microservices/ApiGateway/src/main/java/com/micro/api) | [API Gateway Config](REST_Microservices/ApiGateway/src/main/resources) |
-| [docker compose](REST_Microservices/docker-compose.yml) |                                                                                |                                                                        |     
+| Service                                                   | Code                                                                            | Configuration                                                          |
+|:----------------------------------------------------------|:--------------------------------------------------------------------------------|:-----------------------------------------------------------------------|
+| [Abo Module](REST_Microservices/AboService)               | [Abo Code](REST_Microservices/AboService/src/main/java/com/micro/api)           | [Abo Config](REST_Microservices/AboService/src/main/resources)         |
+| [Cart Module](REST_Microservices/CartService)             | [Cart Code](REST_Microservices/CartService/src/main/java/com/micro/api)         | [Cart Config](REST_Microservices/CartService/src/main/resources)       |
+| [Payment Module](REST_Microservices/PaymentService)       | [Payment Code](REST_Microservices/PaymentService/src/main/java/com/micro/api)   | [Payment Config](REST_Microservices/PaymentService/src/main/resources) |
+| [Product Module](REST_Microservices/ProductService)       | [Product Code](REST_Microservices/ProductService/src/main/java/com/micro/api)   | [Product Config](REST_Microservices/ProductService/src/main/resources) |
+| [API Gateway Module](REST_Microservices/ApiGateway)       | [API Gateway Code](REST_Microservices/ApiGateway/src/main/java/com/micro/api)   | [API Gateway Config](REST_Microservices/ApiGateway/src/main/resources) |
+| [docker compose](REST_Microservices/docker-compose.yml)   |                                                                                 |                                                                        |     
 
 <details>
   <summary>Class Diagram</summary>
@@ -236,8 +235,10 @@ __Note:__ Diagram of only one service to display the pattern.
 <details>
   <summary>Usage</summary>
 
-1. Start Microservice Cluster with `docker-compose up`
-2. Open Service API Documentations
+1. `cd ./REST_Microservices`
+2. Start Microservice Cluster with `docker-compose up` (first start has sometimes race-conditions, with initial
+   exceptions please restart again)
+3. Open Service API Documentations
     * [http://localhost:8080/product/swagger-ui/](http://localhost:8080/product/swagger-ui/)
     * [http://localhost:8080/cart/swagger-ui/](http://localhost:8080/cart/swagger-ui/)
     * [http://localhost:8080/abo/swagger-ui/](http://localhost:8080/abo/swagger-ui/)
@@ -258,6 +259,10 @@ __System Requirements:__
 `Angular 13`-Frontend for all REST APIs. Make sure to set the correct `Backend-URL` in
 the [environment](REST_Client_UI/src/environments).
 
+The application represents a shop for products that need frequent payments. The user can add or delete available
+products, put them into the cart and checkout the cart. The frequent payments will be done in the background and the
+bank will stack up with the abonnements.
+
 |                        Angular                         |
 |:------------------------------------------------------:|
 |           [app root](REST_Client_UI/src/app)           |
@@ -265,18 +270,25 @@ the [environment](REST_Client_UI/src/environments).
 |  [dependencies](REST_Client_UI/src/app/app.module.ts)  |
 |        [dockerfile](REST_Client_UI/Dockerfile)         |
 
+Keep in mind there is no real error handling implemented. Keep an eye on the console (Browser F12) if there are some
+issues.
+
 <details>
   <summary>Usage</summary>
 
+Change to the directory: `cd ./REST_Client_UI`
+
 __Development Server__:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change
-any of the source files.
+Run `npm install` to install the dependencies and `ng serve` for a dev server. Navigate
+to [http://localhost:4200/](http://localhost:4200/). The app will automatically reload if you change any of the source
+files.
 
 __Docker Container__:
 
-1. Run `docker build .`
-2. Start docker container and open `http://localhost:4200/` in the browser.
+1. Run `docker build -t client-ui:latest .`
+2. Start with `docker run -p 4200:4200 --name client-ui client-ui:latest`
+3. Open [http://localhost:4200/](http://localhost:4200/) in the browser.
 
 </details>
 
