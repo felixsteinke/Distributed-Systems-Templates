@@ -1,4 +1,4 @@
-package com.micro.shop;
+package com.micro.api;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.gateway.route.RouteLocator;
