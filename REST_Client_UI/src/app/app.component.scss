@@ -1,0 +1,46 @@
+#app-toolbar {
+  position: fixed;
+  top: 0;
+  height: 64px;
+  z-index: 1000;
+
+  #toolbar-background {
+    background-image: url(../assets/gradient.svg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 14px;
+  }
+
+  #toolbar-navigation {
+
+    ::ng-deep .mat-tab-label-active {
+      color: black;
+      opacity: 1;
+    }
+
+    #left-end-element {
+      margin-left: 25px;
+    }
+
+    #right-end-element {
+      margin-right: 25px;
+    }
+
+    .toolbar-spacer {
+      flex: 1 1 auto;
+    }
+  }
+}
+
+#app-router-container {
+  position: fixed;
+  bottom: 0;
+  height: calc(100% - 64px);
+  width: 100%;
+  overflow-y: auto;
+  background-image: url(../assets/background.svg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

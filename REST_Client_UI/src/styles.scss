@@ -1,0 +1,50 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.primary-snack-bar {
+  button {
+    color: #5168e2;
+  }
+}
+
+.component-container {
+  width: 100%;
+}
+
+.table-container {
+  width: 100%;
+
+  table {
+    margin-top: 30px;
+    margin-bottom: 16px;
+
+    .text-cell {
+      min-width: 120px;
+      padding-right: 25px;
+    }
+
+    .number-cell {
+      min-width: 50px;
+      padding-right: 25px;
+    }
+
+    .icon-cell {
+      width: 50px;
+      text-align: center;
+    }
+
+    mat-paginator {
+      bottom: 0;
+      position: sticky;
+    }
+  }
+}

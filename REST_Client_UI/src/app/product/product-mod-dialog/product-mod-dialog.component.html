@@ -1,0 +1,29 @@
+<h1 mat-dialog-title>Product</h1>
+
+<div fxLayout="column" fxLayoutAlign="start center" mat-dialog-content>
+  <mat-form-field appearance="outline">
+    <mat-label>Number</mat-label>
+    <input [(ngModel)]="product.nr" matInput placeholder="123">
+    <mat-icon matSuffix>dns</mat-icon>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Name</mat-label>
+    <input [(ngModel)]="product.name" matInput placeholder="Product">
+    <mat-icon matSuffix>bookmark</mat-icon>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Price</mat-label>
+    <input [(ngModel)]="product.price" matInput placeholder="1">
+    <mat-icon matSuffix>euro_symbol</mat-icon>
+  </mat-form-field>
+
+</div>
+
+<div fxLayout="column" fxLayoutAlign="center end" id="product-dialog-footer">
+  <div mat-dialog-actions>
+    <button (click)="cancel()" color="primary" mat-dialog-close mat-raised-button>Cancel</button>
+    <button (click)="send()" color="primary" mat-dialog-close mat-raised-button>Create</button>
+  </div>
+</div>

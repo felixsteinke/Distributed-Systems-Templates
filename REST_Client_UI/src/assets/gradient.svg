@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg height="800" stroke-width="4" width="800" xmlns="http://www.w3.org/2000/svg">
+  <linearGradient id="lg" x2="80%" y1="80%">
+    <stop offset="0" stop-color="#00A"/>
+    <stop offset="1" stop-color="#F00"/>
+  </linearGradient>
+  <rect fill="url(#lg)" height="800" width="800"/>
+  <path d="m94,694 600-600" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,30 @@
+<mat-toolbar id="app-toolbar">
+  <mat-toolbar-row id="toolbar-background"></mat-toolbar-row>
+
+  <mat-toolbar-row class="mat-elevation-z8" id="toolbar-navigation">
+    <span id="left-end-element">{{title}}</span>
+    <span class="toolbar-spacer"></span>
+
+    <nav mat-tab-nav-bar>
+      <a [active]="activeRoute === routes.PRODUCT" [routerLink]="routes.PRODUCT" mat-tab-link>
+        Product
+      </a>
+      <a [active]="activeRoute === routes.ABO" [routerLink]="routes.ABO" mat-tab-link>
+        Abo
+      </a>
+      <a [active]="activeRoute === routes.BANK" [routerLink]="routes.BANK" mat-tab-link>
+        Bank
+      </a>
+    </nav>
+
+    <span class="toolbar-spacer"></span>
+
+    <button [routerLink]="routes.CART" color="primary" id="right-end-element" mat-mini-fab>
+      <mat-icon>shopping_cart</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<div id="app-router-container">
+  <router-outlet></router-outlet>
+</div>
