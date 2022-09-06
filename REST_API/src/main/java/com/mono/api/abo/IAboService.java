@@ -1,5 +1,5 @@
 package com.mono.api.abo;
 
-public interface AboService {
+public interface IAboService {
     void addAbo(Integer productNr);
 }

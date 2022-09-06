@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mono.api.MessageConfig;
 import com.mono.api.abo.Abo;
-import com.mono.api.abo.AboService;
+import com.mono.api.abo.IAboService;
 import com.mono.api.payment.PaymentOrder;
 import com.mono.api.product.IProductService;
 import com.mono.api.product.Product;
@@ -27,7 +27,7 @@ import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 @Component
-public class AboManagement implements AboService, MessageListener {
+public class AboManagement implements IAboService, MessageListener {
 
     private final Logger LOGGER = Logger.getLogger(AboManagement.class.getName());
     private final ObjectMapper MAPPER = new ObjectMapper();

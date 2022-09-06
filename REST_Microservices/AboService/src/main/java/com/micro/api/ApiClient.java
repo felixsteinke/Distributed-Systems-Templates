@@ -1,7 +1,7 @@
-package com.micro.shop.consumer;
+package com.micro.api;
 
-import com.micro.shop.consumer.imported.Product;
-import com.micro.shop.consumer.imported.ProductSelector;
+import com.micro.api.external.IProductService;
+import com.micro.api.external.Product;
 import io.netty.channel.ChannelOption;
 import io.netty.handler.timeout.ReadTimeoutHandler;
 import io.netty.handler.timeout.WriteTimeoutHandler;
@@ -13,11 +13,10 @@ import org.springframework.web.reactive.function.client.WebClient;
 import reactor.netty.http.client.HttpClient;
 
 import java.time.Duration;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 @Service
-public class ApiClient implements ProductSelector {
+public class ApiClient implements IProductService {
 
     private final WebClient productClient;
 
@@ -28,11 +27,6 @@ public class ApiClient implements ProductSelector {
                 .baseUrl(productUrl)
                 .clientConnector(new ReactorClientHttpConnector(timeoutConfig(maxBlockMs)))
                 .build();
-    }
-
-    @Override
-    public List<Product> getAllProducts() {
-        return productClient.get().uri("").retrieve().bodyToFlux(Product.class).collectList().block();
     }
 
     @Override

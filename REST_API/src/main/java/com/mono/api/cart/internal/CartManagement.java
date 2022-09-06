@@ -1,6 +1,6 @@
 package com.mono.api.cart.internal;
 
-import com.mono.api.abo.AboService;
+import com.mono.api.abo.IAboService;
 import com.mono.api.cart.CartItem;
 import com.mono.api.product.IProductService;
 import com.mono.api.product.Product;
@@ -16,11 +16,11 @@ import java.util.List;
 public class CartManagement {
 
     private final List<CartItem> CART = new ArrayList<>();
-    private final AboService aboService;
+    private final IAboService aboService;
     private final IProductService productService;
 
     @Autowired
-    public CartManagement(AboService aboService, IProductService productService) {
+    public CartManagement(IAboService aboService, IProductService productService) {
         this.aboService = aboService;
         this.productService = productService;
     }

@@ -1,7 +1,6 @@
-package com.micro.shop.abo;
+package com.micro.api.abo;
 
-import com.micro.shop.abo.access.Abo;
-import com.micro.shop.abo.internal.AboManagement;
+import com.micro.api.abo.internal.AboManagement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
