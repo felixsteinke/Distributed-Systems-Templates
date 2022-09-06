@@ -1,6 +1,6 @@
 # Distributed System Demos
 
-## [Java RMI](JavaRMI/src/main/java)
+## 📂 [Java RMI](JavaRMI/src/main/java)
 
 The [Server](JavaRMI/src/main/java/server_module/Server.java) provides a __skeleton__ with an
 implemented [RMI Interface](JavaRMI/src/main/java/interface_module). This interface can be used from
@@ -49,7 +49,7 @@ __System Requirements:__
 * Java
 * Maven
 
-## [MQTT Controller](MqttController/src/main/java)
+## 📂 [MQTT Controller](MqttController/src/main/java)
 
 The controller show a small usage of the [Publisher](MqttController/src/main/java/server_module/Publisher.java) and
 [Subscriber](MqttController/src/main/java/client_module/Subscriber.java) concept of MQTT. The communication goes over a
@@ -117,7 +117,7 @@ __System Requirements:__
 * Maven
 * ActiveMQ
 
-## [Multi Threading](MultiThread_MonteCarlo/src/main/java/app)
+## 📂 [Multi Threading](MultiThread_MonteCarlo/src/main/java/app)
 
 A small example for multi threading is the calculation of Pi in the context of the __Monte Carlo__ problem. New issues
 like __deadlocks and race conditions__ need to be addressed in manual multi threading.
@@ -166,7 +166,7 @@ __System Requirements:__
 * Java
 * Maven
 
-## [REST API](REST_API/src/main/java/com/mono/api)
+## 📂 [REST API](REST_API/src/main/java/com/mono/api)
 
 Monolithic REST API for a shop with `Spring Boot`.
 
@@ -189,8 +189,8 @@ __Note:__ Names might have changed.
   <summary>Usage</summary>
 
 1. Start Application
-   * by run [ShopApplication main()](REST_API/src/main/java/com/mono/api/ShopApplication.java)
-   * by command `docker-compose up`
+    * by run [ShopApplication main()](REST_API/src/main/java/com/mono/api/ShopApplication.java)
+    * by command `docker-compose up`
 2. Open API Documentation on [http://localhost:8080/swagger-ui/](http://localhost:8080/swagger-ui/)
 
 </details>
@@ -203,7 +203,7 @@ __System Requirements:__
 * MySQL
 * (Docker)
 
-## [REST Microservices](REST_Microservices)
+## 📂 [REST Microservices](REST_Microservices)
 
 Microservices for a shop with `Spring Boot`.
 Transformed from the monolithic REST-API.
@@ -231,10 +231,10 @@ __Note:__ Diagram of only one service to display the pattern.
 
 1. Start Microservice Cluster with `docker-compose up`
 2. Open Service API Documentations
-   * [http://localhost:8080/product/swagger-ui/](http://localhost:8080/product/swagger-ui/)
-   * [http://localhost:8080/cart/swagger-ui/](http://localhost:8080/cart/swagger-ui/)
-   * [http://localhost:8080/abo/swagger-ui/](http://localhost:8080/abo/swagger-ui/)
-   * [http://localhost:8080/payment/swagger-ui/](http://localhost:8080/payment/swagger-ui/)
+    * [http://localhost:8080/product/swagger-ui/](http://localhost:8080/product/swagger-ui/)
+    * [http://localhost:8080/cart/swagger-ui/](http://localhost:8080/cart/swagger-ui/)
+    * [http://localhost:8080/abo/swagger-ui/](http://localhost:8080/abo/swagger-ui/)
+    * [http://localhost:8080/payment/swagger-ui/](http://localhost:8080/payment/swagger-ui/)
 
 </details>
 
@@ -246,7 +246,39 @@ __System Requirements:__
 * MySQL
 * Docker
 
-## System Requirements
+## 📂 [REST Client UI](REST_Client_UI)
+
+`Angular 13`-Frontend for all REST APIs. Make sure to set the correct `Backend-URL` in
+the [environment](REST_Client_UI/src/environments).
+
+|                        Angular                         |
+|:------------------------------------------------------:|
+|           [app root](REST_Client_UI/src/app)           |
+| [backend connector](REST_Client_UI/src/app/connector)  |
+|  [dependencies](REST_Client_UI/src/app/app.module.ts)  |
+|        [dockerfile](REST_Client_UI/Dockerfile)         |
+
+<details>
+  <summary>Usage</summary>
+
+__Development Server__:
+
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change
+any of the source files.
+
+__Docker Container__:
+
+1. Run `docker build .`
+2. Start docker container and open `http://localhost:4200/` in the browser.
+
+</details>
+
+__System Requirements:__
+
+* NodeJS
+* Docker
+
+## 💾 System Requirements
 
 ### Java 11
 
@@ -281,6 +313,12 @@ __System Requirements:__
 2. Install the executable
 3. Select `Server only`
 4. Default `root` password: `password` (not for productive DB!)
+
+### NodeJS
+
+1. Download: [NodeJS](https://nodejs.org/en/)
+2. Install the executable
+3. Install the Angular CLI: `npm install -g @angular/cli@13.3.9`
 
 ### Docker
 

@@ -10,8 +10,8 @@
     </parent>
 
     <groupId>com.steinke.felix</groupId>
-    <artifactId>Monolithic_Shop</artifactId>
-    <name>Monolithic_Shop</name>
+    <artifactId>REST_API</artifactId>
+    <name>REST_API</name>
     <version>0.0.1-SNAPSHOT</version>
     <description>Monolithic REST API</description>
 
