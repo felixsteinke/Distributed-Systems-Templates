@@ -1,9 +1,9 @@
-package com.micro.shop.payment.internal;
+package com.micro.api.payment.internal;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.micro.shop.MessageConfig;
-import com.micro.shop.payment.access.PaymentOrder;
+import com.micro.api.MessageConfig;
+import com.micro.api.payment.PaymentOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.jms.core.JmsTemplate;

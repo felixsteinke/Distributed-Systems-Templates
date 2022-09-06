@@ -1,6 +1,6 @@
-package com.micro.shop.payment;
+package com.micro.api.payment;
 
-import com.micro.shop.payment.internal.PaymentExecutor;
+import com.micro.api.payment.internal.PaymentExecutor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
