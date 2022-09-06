@@ -168,11 +168,11 @@ __System Requirements:__
 
 ## 📂 [REST API](REST_API/src/main/java/com/mono/api)
 
-Monolithic REST API for a shop with `Spring Boot`.
+Monolithic REST API application with `Spring Boot`.
 
 |               Table of Content                |
 |:---------------------------------------------:|
-| [code](REST_API/src/main/java/com/mono/api)  |
+|  [code](REST_API/src/main/java/com/mono/api)  |
 | [configuration](REST_API/src/main/resources)  |
 |       [dependencies](REST_API/pom.xml)        |
 | [docker compose](REST_API/docker-compose.yml) |
@@ -188,10 +188,17 @@ __Note:__ Names might have changed.
 <details>
   <summary>Usage</summary>
 
-1. Start Application
-    * by run [ShopApplication main()](REST_API/src/main/java/com/mono/api/ShopApplication.java)
-    * by command `docker-compose up`
-2. Open API Documentation on [http://localhost:8080/swagger-ui/](http://localhost:8080/swagger-ui/)
+__Development:__
+
+1. Provide the `MySQL-Server` and the `ActiveMQ-Broker` on the ports described in the configuration.
+2. Run [ShopApplication main()](REST_API/src/main/java/com/mono/api/ShopApplication.java)
+3. Open API Documentation on [http://localhost:8080/swagger-ui/](http://localhost:8080/swagger-ui/)
+
+__Production:__
+
+1. `cd ./REST_API`
+2. `docker-compose up` (first start has sometimes race-conditions, with initial exceptions please restart again)
+3. Open API Documentation on [http://localhost:8080/swagger-ui/](http://localhost:8080/swagger-ui/)
 
 </details>
 
@@ -205,7 +212,7 @@ __System Requirements:__
 
 ## 📂 [REST Microservices](REST_Microservices)
 
-Microservices for a shop with `Spring Boot`.
+Microservices for an application with `Spring Boot`.
 Transformed from the monolithic REST-API.
 Service Modules are as independent as possible.
 
