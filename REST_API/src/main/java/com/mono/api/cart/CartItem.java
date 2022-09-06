@@ -1,7 +1,9 @@
 package com.mono.api.cart;
 
 import com.mono.api.product.Product;
+import lombok.Getter;
 
+@Getter
 public class CartItem {
 
     private final Product product;
@@ -10,13 +12,5 @@ public class CartItem {
     public CartItem(Product product, Integer count) {
         this.product = product;
         this.count = count;
-    }
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public Integer getCount() {
-        return count;
     }
 }

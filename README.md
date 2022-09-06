@@ -218,11 +218,11 @@ Service Modules are as independent as possible.
 
 | Service                                                 | Code                                                                           | Configuration                                                          |
 |:--------------------------------------------------------|:-------------------------------------------------------------------------------|:-----------------------------------------------------------------------|
-| [Abo Module](REST_Microservices/AboService)             | [Abo Code](REST_Microservices/AboService/src/main/java/com/micro/shop)         | [Abo Config](REST_Microservices/AboService/src/main/resources)         |
-| [Cart Module](REST_Microservices/CartService)           | [Cart Code](REST_Microservices/CartService/src/main/java/com/micro/shop)       | [Cart Config](REST_Microservices/CartService/src/main/resources)       |
-| [Payment Module](REST_Microservices/PaymentService)     | [Payment Code](REST_Microservices/PaymentService/src/main/java/com/micro/shop) | [Payment Config](REST_Microservices/PaymentService/src/main/resources) |
-| [Product Module](REST_Microservices/ProductService)     | [Product Code](REST_Microservices/ProductService/src/main/java/com/micro/shop) | [Product Config](REST_Microservices/ProductService/src/main/resources) |
-| [API Gateway Module](REST_Microservices/ApiGateway)     | [API Gateway Code](REST_Microservices/ApiGateway/src/main/java/com/micro/shop) | [API Gateway Config](REST_Microservices/ApiGateway/src/main/resources) |
+| [Abo Module](REST_Microservices/AboService)             | [Abo Code](REST_Microservices/AboService/src/main/java/com/micro/api)         | [Abo Config](REST_Microservices/AboService/src/main/resources)         |
+| [Cart Module](REST_Microservices/CartService)           | [Cart Code](REST_Microservices/CartService/src/main/java/com/micro/api)       | [Cart Config](REST_Microservices/CartService/src/main/resources)       |
+| [Payment Module](REST_Microservices/PaymentService)     | [Payment Code](REST_Microservices/PaymentService/src/main/java/com/micro/api) | [Payment Config](REST_Microservices/PaymentService/src/main/resources) |
+| [Product Module](REST_Microservices/ProductService)     | [Product Code](REST_Microservices/ProductService/src/main/java/com/micro/api) | [Product Config](REST_Microservices/ProductService/src/main/resources) |
+| [API Gateway Module](REST_Microservices/ApiGateway)     | [API Gateway Code](REST_Microservices/ApiGateway/src/main/java/com/micro/api) | [API Gateway Config](REST_Microservices/ApiGateway/src/main/resources) |
 | [docker compose](REST_Microservices/docker-compose.yml) |                                                                                |                                                                        |     
 
 <details>

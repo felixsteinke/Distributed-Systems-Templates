@@ -1,8 +1,8 @@
-package com.micro.shop.consumer;
+package com.micro.api;
 
-import com.micro.shop.consumer.imported.AboCreator;
-import com.micro.shop.consumer.imported.Product;
-import com.micro.shop.consumer.imported.ProductSelector;
+import com.micro.api.external.IAboService;
+import com.micro.api.external.IProductService;
+import com.micro.api.external.Product;
 import io.netty.channel.ChannelOption;
 import io.netty.handler.timeout.ReadTimeoutHandler;
 import io.netty.handler.timeout.WriteTimeoutHandler;
@@ -17,7 +17,7 @@ import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 @Service
-public class ApiClient implements ProductSelector, AboCreator {
+public class ApiClient implements IProductService, IAboService {
 
     private final WebClient productClient;
     private final WebClient aboClient;

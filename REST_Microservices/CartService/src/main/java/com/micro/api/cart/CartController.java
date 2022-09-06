@@ -1,7 +1,6 @@
-package com.micro.shop.cart;
+package com.micro.api.cart;
 
-import com.micro.shop.cart.access.CartItem;
-import com.micro.shop.cart.internal.CartManagement;
+import com.micro.api.cart.internal.CartManagement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -9,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-// TODO convert to Stateful Bean
 @RestController
 @RequestMapping("")
 public class CartController {

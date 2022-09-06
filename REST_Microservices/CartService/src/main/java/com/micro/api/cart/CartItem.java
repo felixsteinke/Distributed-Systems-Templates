@@ -1,7 +1,9 @@
-package com.micro.shop.cart.access;
+package com.micro.api.cart;
 
-import com.micro.shop.consumer.imported.Product;
+import com.micro.api.external.Product;
+import lombok.Getter;
 
+@Getter
 public class CartItem {
 
     private final Product product;
@@ -10,13 +12,5 @@ public class CartItem {
     public CartItem(Product product, Integer count) {
         this.product = product;
         this.count = count;
-    }
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public Integer getCount() {
-        return count;
     }
 }
