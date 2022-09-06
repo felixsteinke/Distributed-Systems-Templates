@@ -1,0 +1,54 @@
+<div class="table-container" fxLayout="column" fxLayoutAlign="start center">
+  <table [dataSource]="table.dataSource" class="mat-elevation-z8" mat-table matSort>
+
+    <ng-container matColumnDef="{{table.columns.NR}}">
+      <th *matHeaderCellDef class="number-cell" mat-header-cell mat-sort-header>
+        Nr.
+      </th>
+      <td *matCellDef="let element" class="number-cell" mat-cell>
+        {{element.product.nr}}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="{{table.columns.NAME}}">
+      <th *matHeaderCellDef class="text-cell" mat-header-cell mat-sort-header>
+        Name
+      </th>
+      <td *matCellDef="let element" class="text-cell" mat-cell>
+        {{element.product.name}}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="{{table.columns.PRICE}}">
+      <th *matHeaderCellDef class="number-cell" mat-header-cell mat-sort-header>
+        Price
+      </th>
+      <td *matCellDef="let element" class="number-cell" mat-cell>
+        {{element.product.price * element.count}} €
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="{{table.columns.COUNT}}">
+      <th *matHeaderCellDef class="number-cell" mat-header-cell mat-sort-header>
+        Count
+      </th>
+      <td *matCellDef="let element" class="number-cell" mat-cell>
+        {{element.count}}
+      </td>
+    </ng-container>
+
+    <tr *matHeaderRowDef="table.displayedColumns" mat-header-row></tr>
+    <tr *matRowDef="let row; columns: table.displayedColumns;" mat-row></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[10, 25, 50]" class="mat-elevation-z8" showFirstLastButtons></mat-paginator>
+
+  <div fxLayout="row" fxLayoutAlign="center center" id="cart-actions">
+    <button (click)="resetCart()" color="primary" mat-raised-button>
+      Reset Cart
+    </button>
+    <button (click)="checkoutCart()" color="primary" mat-raised-button>
+      Checkout Cart
+    </button>
+  </div>
+</div>

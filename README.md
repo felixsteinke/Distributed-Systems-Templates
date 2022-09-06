@@ -1,6 +1,6 @@
 # Distributed System Demos
 
-## [Java RMI](JavaRMI/src/main/java)
+## 📂 [Java RMI](JavaRMI/src/main/java)
 
 The [Server](JavaRMI/src/main/java/server_module/Server.java) provides a __skeleton__ with an
 implemented [RMI Interface](JavaRMI/src/main/java/interface_module). This interface can be used from
@@ -49,7 +49,7 @@ __System Requirements:__
 * Java
 * Maven
 
-## [MQTT Controller](MqttController/src/main/java)
+## 📂 [MQTT Controller](MqttController/src/main/java)
 
 The controller show a small usage of the [Publisher](MqttController/src/main/java/server_module/Publisher.java) and
 [Subscriber](MqttController/src/main/java/client_module/Subscriber.java) concept of MQTT. The communication goes over a
@@ -117,7 +117,7 @@ __System Requirements:__
 * Maven
 * ActiveMQ
 
-## [Multi Threading](MultiThread_MonteCarlo/src/main/java/app)
+## 📂 [Multi Threading](MultiThread_MonteCarlo/src/main/java/app)
 
 A small example for multi threading is the calculation of Pi in the context of the __Monte Carlo__ problem. New issues
 like __deadlocks and race conditions__ need to be addressed in manual multi threading.
@@ -166,7 +166,138 @@ __System Requirements:__
 * Java
 * Maven
 
-## System Requirements
+## 📂 [REST API](REST_API/src/main/java/com/mono/api)
+
+Monolithic REST API application with `Spring Boot`.
+
+|               Table of Content                |
+|:---------------------------------------------:|
+|  [code](REST_API/src/main/java/com/mono/api)  |
+| [configuration](REST_API/src/main/resources)  |
+|       [dependencies](REST_API/pom.xml)        |
+| [docker compose](REST_API/docker-compose.yml) |
+
+<details>
+  <summary>Class Diagram</summary>
+
+__Note:__ Names might have changed.
+
+![Monolithic class diagram](.readme-images/monolithic-classes.png)
+</details>
+
+<details>
+  <summary>Usage</summary>
+
+__Development:__
+
+1. Provide the `MySQL-Server` and the `ActiveMQ-Broker` on the ports described in the configuration.
+2. Run [ShopApplication main()](REST_API/src/main/java/com/mono/api/ShopApplication.java)
+3. Open API Documentation on [http://localhost:8080/swagger-ui/](http://localhost:8080/swagger-ui/)
+
+__Production:__
+
+1. `cd ./REST_API`
+2. `docker-compose up` (first start has sometimes race-conditions, with initial exceptions please restart again)
+3. Open API Documentation on [http://localhost:8080/swagger-ui/](http://localhost:8080/swagger-ui/)
+
+</details>
+
+__System Requirements:__
+
+* Java
+* Maven
+* ActiveMQ
+* MySQL
+* (Docker)
+
+## 📂 [REST Microservices](REST_Microservices)
+
+Microservices for an application with `Spring Boot`. Transformed from the monolithic REST-API. Service Modules are as
+independent as possible.
+
+| Service                                                   | Code                                                                            | Configuration                                                          |
+|:----------------------------------------------------------|:--------------------------------------------------------------------------------|:-----------------------------------------------------------------------|
+| [Abo Module](REST_Microservices/AboService)               | [Abo Code](REST_Microservices/AboService/src/main/java/com/micro/api)           | [Abo Config](REST_Microservices/AboService/src/main/resources)         |
+| [Cart Module](REST_Microservices/CartService)             | [Cart Code](REST_Microservices/CartService/src/main/java/com/micro/api)         | [Cart Config](REST_Microservices/CartService/src/main/resources)       |
+| [Payment Module](REST_Microservices/PaymentService)       | [Payment Code](REST_Microservices/PaymentService/src/main/java/com/micro/api)   | [Payment Config](REST_Microservices/PaymentService/src/main/resources) |
+| [Product Module](REST_Microservices/ProductService)       | [Product Code](REST_Microservices/ProductService/src/main/java/com/micro/api)   | [Product Config](REST_Microservices/ProductService/src/main/resources) |
+| [API Gateway Module](REST_Microservices/ApiGateway)       | [API Gateway Code](REST_Microservices/ApiGateway/src/main/java/com/micro/api)   | [API Gateway Config](REST_Microservices/ApiGateway/src/main/resources) |
+| [docker compose](REST_Microservices/docker-compose.yml)   |                                                                                 |                                                                        |     
+
+<details>
+  <summary>Class Diagram</summary>
+
+__Note:__ Diagram of only one service to display the pattern.
+
+![Microservice class diagram](.readme-images/microservice-classes.png)
+</details>
+
+<details>
+  <summary>Usage</summary>
+
+1. `cd ./REST_Microservices`
+2. Start Microservice Cluster with `docker-compose up` (first start has sometimes race-conditions, with initial
+   exceptions please restart again)
+3. Open Service API Documentations
+    * [http://localhost:8080/product/swagger-ui/](http://localhost:8080/product/swagger-ui/)
+    * [http://localhost:8080/cart/swagger-ui/](http://localhost:8080/cart/swagger-ui/)
+    * [http://localhost:8080/abo/swagger-ui/](http://localhost:8080/abo/swagger-ui/)
+    * [http://localhost:8080/payment/swagger-ui/](http://localhost:8080/payment/swagger-ui/)
+
+</details>
+
+__System Requirements:__
+
+* Java
+* Maven
+* ActiveMQ
+* MySQL
+* Docker
+
+## 📂 [REST Client UI](REST_Client_UI)
+
+`Angular 13`-Frontend for all REST APIs. Make sure to set the correct `Backend-URL` in
+the [environment](REST_Client_UI/src/environments).
+
+The application represents a shop for products that need frequent payments. The user can add or delete available
+products, put them into the cart and checkout the cart. The frequent payments will be done in the background and the
+bank will stack up with the abonnements.
+
+|                        Angular                         |
+|:------------------------------------------------------:|
+|           [app root](REST_Client_UI/src/app)           |
+| [backend connector](REST_Client_UI/src/app/connector)  |
+|  [dependencies](REST_Client_UI/src/app/app.module.ts)  |
+|        [dockerfile](REST_Client_UI/Dockerfile)         |
+
+Keep in mind there is no real error handling implemented. Keep an eye on the console (Browser F12) if there are some
+issues.
+
+<details>
+  <summary>Usage</summary>
+
+Change to the directory: `cd ./REST_Client_UI`
+
+__Development Server__:
+
+Run `npm install` to install the dependencies and `ng serve` for a dev server. Navigate
+to [http://localhost:4200/](http://localhost:4200/). The app will automatically reload if you change any of the source
+files.
+
+__Docker Container__:
+
+1. Run `docker build -t client-ui:latest .`
+2. Start with `docker run -p 4200:4200 --name client-ui client-ui:latest`
+3. Open [http://localhost:4200/](http://localhost:4200/) in the browser.
+
+</details>
+
+__System Requirements:__
+
+* NodeJS
+* Docker
+
+## 💾 System Requirements
 
 ### Java 11
 
@@ -195,3 +326,20 @@ __System Requirements:__
 5. Test command: `activemq start`
 6. Admin page: [http://localhost:8161/admin](http://localhost:8161/admin) with `admin`, `admin` credentials.
 
+### MySQL
+
+1. Download: [MySQL 8 Server](https://dev.mysql.com/downloads/installer/)
+2. Install the executable
+3. Select `Server only`
+4. Default `root` password: `password` (not for productive DB!)
+
+### NodeJS
+
+1. Download: [NodeJS](https://nodejs.org/en/)
+2. Install the executable
+3. Install the Angular CLI: `npm install -g @angular/cli@13.3.9`
+
+### Docker
+
+1. Download: [Docker Desktop](https://www.docker.com/products/docker-desktop)
+2. Install the executable

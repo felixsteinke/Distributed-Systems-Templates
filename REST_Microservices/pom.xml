@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.steinke.felix</groupId>
+    <artifactId>REST_Microservices</artifactId>
+    <name>REST_Microservices</name>
+    <version>0.0.1-SNAPSHOT</version>
+    <description>Microservice Modules for Project Structure</description>
+
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>ApiGateway</module>
+        <module>AboService</module>
+        <module>CartService</module>
+        <module>PaymentService</module>
+        <module>ProductService</module>
+    </modules>
+</project>

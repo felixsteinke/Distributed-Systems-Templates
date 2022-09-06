@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.5.6</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <groupId>com.steinke.felix</groupId>
+    <artifactId>REST_API</artifactId>
+    <name>REST_API</name>
+    <version>0.0.1-SNAPSHOT</version>
+    <description>Monolithic REST API</description>
+
+    <properties>
+        <java.version>11</java.version>
+    </properties>
+
+    <dependencies>
+        <!-- ⋁ Default Spring Boot Web and Testing -->
+        <dependency>
+            <!-- Guide: https://spring.io/guides/gs/serving-web-content/ -->
+            <!-- Doc: https://docs.spring.io/spring-boot/docs/2.5.6/reference/htmlsingle/#boot-features-developing-web-applications -->
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>${project.parent.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- ∧ Default Spring Boot Web and Testing -->
+        <!-- ⋁ Spring Data via JPA and MySQL -->
+        <dependency>
+            <!-- Guide: https://spring.io/guides/gs/accessing-data-jpa/ -->
+            <!-- Doc: https://docs.spring.io/spring-boot/docs/2.5.6/reference/htmlsingle/#boot-features-jpa-and-spring-data -->
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+        <dependency>
+            <!-- Guide: https://spring.io/guides/gs/accessing-data-mysql/-->
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.27</version>
+            <scope>runtime</scope>
+        </dependency>
+        <!-- ∧ Spring Data via JPA and MySQL -->
+        <!-- ⋁ Spring JMS via ActiveMQ -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-activemq</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+        <!-- ∧ Spring JMS via ActiveMQ -->
+        <!-- ⋁ Swagger API Documentation -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-boot-starter</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+        <!-- ∧ Swagger API Documentation -->
+        <!-- ⋁ Lombok to skip boilerplate code -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.24</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- ∧ Lombok to skip boilerplate code -->
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${project.parent.version}</version>
+            </plugin>
+        </plugins>
+    </build>
+</project>

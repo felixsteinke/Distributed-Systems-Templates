@@ -18,5 +18,7 @@
         <module>JavaRMI</module>
         <module>MultiThread_MonteCarlo</module>
         <module>MqttController</module>
+        <module>REST_API</module>
+        <module>REST_Microservices</module>
     </modules>
 </project>

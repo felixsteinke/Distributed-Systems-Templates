@@ -1,0 +1,65 @@
+<div class="table-container" fxLayout="column" fxLayoutAlign="start center">
+  <table [dataSource]="table.dataSource" class="mat-elevation-z8" mat-table matSort>
+
+    <ng-container matColumnDef="{{table.columns.ID}}">
+      <th *matHeaderCellDef class="number-cell" mat-header-cell mat-sort-header>
+        ID
+      </th>
+      <td *matCellDef="let element" class="number-cell" mat-cell>
+        {{element.id}}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="{{table.columns.PRODUCT_NR}}">
+      <th *matHeaderCellDef class="number-cell" mat-header-cell mat-sort-header>
+        Product Nr.
+      </th>
+      <td *matCellDef="let element" class="number-cell" mat-cell>
+        {{element.productNr}}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="{{table.columns.PRODUCT_NAME}}">
+      <th *matHeaderCellDef class="text-cell" mat-header-cell mat-sort-header>
+        Product Name
+      </th>
+      <td *matCellDef="let element" class="text-cell" mat-cell>
+        {{element.productName}}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="{{table.columns.PRICE}}">
+      <th *matHeaderCellDef class="number-cell" mat-header-cell mat-sort-header>
+        Price
+      </th>
+      <td *matCellDef="let element" class="number-cell" mat-cell>
+        {{element.price}} €
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="{{table.columns.PAYED}}">
+      <th *matHeaderCellDef class="icon-cell" mat-header-cell>
+        Payed
+      </th>
+      <td *matCellDef="let element" class="icon-cell" mat-cell>
+        <mat-icon *ngIf="element.payed">check_circle_outline</mat-icon>
+        <mat-icon *ngIf="!element.payed">cancel</mat-icon>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="{{table.columns.ACTIONS}}">
+      <th *matHeaderCellDef class="icon-cell" mat-header-cell>
+      </th>
+      <td *matCellDef="let element" class="icon-cell" mat-cell>
+        <button (click)="cancelAbo(element)" color="warn" mat-icon-button>
+          <mat-icon>remove_circle_outline</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr *matHeaderRowDef="table.displayedColumns" mat-header-row></tr>
+    <tr *matRowDef="let row; columns: table.displayedColumns;" mat-row></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[10, 25, 50]" class="mat-elevation-z8" showFirstLastButtons></mat-paginator>
+</div>
