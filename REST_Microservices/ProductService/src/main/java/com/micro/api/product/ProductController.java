@@ -1,7 +1,6 @@
-package com.micro.shop.product;
+package com.micro.api.product;
 
-import com.micro.shop.product.access.Product;
-import com.micro.shop.product.internal.ProductManagement;
+import com.micro.api.product.internal.ProductManagement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

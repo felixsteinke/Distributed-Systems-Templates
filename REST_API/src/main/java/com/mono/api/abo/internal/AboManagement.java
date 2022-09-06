@@ -6,8 +6,8 @@ import com.mono.api.MessageConfig;
 import com.mono.api.abo.Abo;
 import com.mono.api.abo.AboService;
 import com.mono.api.payment.PaymentOrder;
+import com.mono.api.product.IProductService;
 import com.mono.api.product.Product;
-import com.mono.api.product.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.jms.core.JmsTemplate;
@@ -34,11 +34,11 @@ public class AboManagement implements AboService, MessageListener {
     private final ScheduledExecutorService MONTH_SCHEDULER = Executors.newSingleThreadScheduledExecutor();
 
     private final AboRepo aboRepo;
-    private final ProductService productService;
+    private final IProductService productService;
     private final JmsTemplate jmsTemplate;
 
     @Autowired
-    public AboManagement(AboRepo aboRepo, ProductService productService, JmsTemplate jmsTemplate) {
+    public AboManagement(AboRepo aboRepo, IProductService productService, JmsTemplate jmsTemplate) {
         this.aboRepo = aboRepo;
         this.productService = productService;
         this.jmsTemplate = jmsTemplate;

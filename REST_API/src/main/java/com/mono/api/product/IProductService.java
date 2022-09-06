@@ -1,6 +1,6 @@
 package com.mono.api.product;
 
 
-public interface ProductService {
+public interface IProductService {
     Product getProduct(Integer productNr);
 }

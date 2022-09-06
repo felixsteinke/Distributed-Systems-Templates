@@ -2,8 +2,8 @@ package com.mono.api.cart.internal;
 
 import com.mono.api.abo.AboService;
 import com.mono.api.cart.CartItem;
+import com.mono.api.product.IProductService;
 import com.mono.api.product.Product;
-import com.mono.api.product.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
@@ -17,10 +17,10 @@ public class CartManagement {
 
     private final List<CartItem> CART = new ArrayList<>();
     private final AboService aboService;
-    private final ProductService productService;
+    private final IProductService productService;
 
     @Autowired
-    public CartManagement(AboService aboService, ProductService productService) {
+    public CartManagement(AboService aboService, IProductService productService) {
         this.aboService = aboService;
         this.productService = productService;
     }

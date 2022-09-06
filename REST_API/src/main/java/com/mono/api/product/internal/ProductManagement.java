@@ -1,7 +1,7 @@
 package com.mono.api.product.internal;
 
+import com.mono.api.product.IProductService;
 import com.mono.api.product.Product;
-import com.mono.api.product.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
-public class ProductManagement implements ProductService {
+public class ProductManagement implements IProductService {
 
     private final ProductRepo productRepo;
 
