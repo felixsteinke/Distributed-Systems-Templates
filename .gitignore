@@ -77,3 +77,6 @@ build/
 **/testem.log
 **/typings
 **/chrome-profiler-events*.json
+
+### HELM ###
+MicroserviceHelmChart-*.tgz
