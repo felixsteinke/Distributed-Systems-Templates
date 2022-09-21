@@ -297,6 +297,128 @@ __System Requirements:__
 * NodeJS
 * Docker
 
+## 📑 Kubernetes & Helm
+
+An advanced topic for microservices is the deployment on a `Kubernetes Cluster` for the container orchestration. To get
+an idea of Kubernetes, a small demo with [MiniKube](https://kubernetes.io/docs/tasks/tools/) will be explained.
+
+__MiniKube__ provides a `Master Node` and `Worker Node` on the local machine. It requires another virtual machine
+manager
+such as Docker, Hyper-V or VirtualBox to do that.
+
+In general the __Master Node__ provides services like an `API Server`, `Scheduler` or `Controller Manager`. The
+__Worker Nodes__ run the `Pods` with the `Containers` and are managed by the master.
+
+For the communication with the __API Server__ of the Cluster, the UI or CLI of Kubernetes can be used as clients. The
+CLI is provided by `Kubectl` and already installed with __MiniKube__.
+
+<details>
+  <summary>Components of Kubernetes</summary>
+
+![Components of Kubernetes](.readme-images/components-of-kubernetes.png)
+
+Source: [https://kubernetes.io/docs/concepts/overview/components/](https://kubernetes.io/docs/concepts/overview/components/)
+
+</details>
+
+### MiniKube & Helm Installation
+
+Follow the [Official Kubernetes Installation Guide](https://minikube.sigs.k8s.io/docs/start/) with a comfortable
+description.
+
+<details>
+  <summary>Quick Kubernetes Installation Guide</summary>
+
+1. Install the `minikube.exe`
+2. Test command: `kubectl version`
+3. If the command is unknown: (otherwise the installation is finished)
+4. Set [System Environment Variables](.readme-images/system-environment-guide.png):
+5. Edit > `PATH` > New: `C:\Program Files\Kubernetes\Minikube`
+
+</details>
+
+Follow the [Official Helm Installation Guide](https://helm.sh/docs/intro/install/) with a comfortable description.
+
+<details>
+  <summary>Quick Helm Installation Guide</summary>
+
+1. Download the last [Helm Release](https://github.com/helm/helm/releases)
+2. Unpack it and move the binary to `C:\Program Files\Helm`
+3. Set [System Environment Variables](.readme-images/system-environment-guide.png):
+4. Edit > `PATH` > New: `C:\Program Files\Helm`
+5. Test command: `helm version`
+
+</details>
+
+__System Requirements:__
+
+* Docker
+
+### Start MiniKube Cluster
+
+Run following commands to start the cluster:
+
+1. `minikube start`
+2. `minikube status`
+3. `minikube dashboard`
+
+Additional commands:
+
+* Start in debug mode: `minikube start --alsologtostderr`
+* Stop the cluster: `minikube delete`
+* [Basic Controls](https://minikube.sigs.k8s.io/docs/handbook/controls/)
+
+### Deployment with Helm
+
+The deployment could be done with the `Kubectl` CLI to access the __Kubernetes API Server__. This produces a lot of
+effort for multiple services and applications. To make things easier, [Helm](https://helm.sh/docs/intro/quickstart/) can
+be used.
+
+__Helm__ is a tool that provides a __Manager__ for `Helm Charts` that bundle `YAML Files` with different configurations.
+In combination with the `Templating Feature`, blueprints can be created to make configurations easier. The values from
+the __Helm Charts__ will get injected into the final deployment configuration for Kubernetes.
+
+In a nutshell each __YAML Files__ for a Pod gets bundled into a __Helm Chart__ to simplify the configuration and to make
+it reusable.
+
+<details>
+  <summary>Helm 2 vs. 3</summary>
+
+In __Helm 2__ a `Tiller Service` was implemented in the Kubernetes Cluster. It enabled __Release Management__ to upgrade
+or rollback in between different versions of the deployment. Because this service had too much power, it became a
+security issue. Therefore, __Helm 3__ removed __Tiller__ for more security with the loss of the release management.
+
+</details>
+
+<details>
+  <summary>Helm Chart Structure</summary>
+
+Create new chart: `helm create MyChart`
+
+```
+MyChart/  
+   Chart.yaml     --> meta information
+   values.yaml    --> values for the template files
+   charts/        --> chart dependencies
+   templates/     --> actual template files
+   configs/       --> config maps for applications
+```
+
+</details>
+
+To deploy the application on the local __MiniKube__, the containers need to be build fist with
+the [docker-image-build.sh](docker-image-build.sh). Then the Helm Chart can be packaged:
+
+```shell
+helm package MicroserviceHelmChart
+```
+
+After that we can install the archive file on the running Kubernetes Cluster:
+
+```shell
+helm install release1 MicroserviceHelmChart-0.1.0.tgz
+```
+
 ## 💾 System Requirements
 
 ### Java 11
