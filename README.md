@@ -409,14 +409,16 @@ MyChart/
 To deploy the application on the local __MiniKube__, the containers need to be build fist with
 the [docker-image-build.sh](docker-image-build.sh). Then the Helm Chart can be packaged:
 
+> The Helm Chart will be available and explained in the future
+
 ```shell
-helm package MicroserviceHelmChart
+helm package HelmChart
 ```
 
 After that we can install the archive file on the running Kubernetes Cluster:
 
 ```shell
-helm install release1 MicroserviceHelmChart-0.1.0.tgz
+helm install release1 HelmChart-0.1.0.tgz
 ```
 
 ## 💾 System Requirements
