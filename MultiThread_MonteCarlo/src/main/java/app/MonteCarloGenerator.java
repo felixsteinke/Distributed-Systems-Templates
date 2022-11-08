@@ -1,5 +1,6 @@
 package app;
 
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.logging.Logger;
 
 public class MonteCarloGenerator {
@@ -10,7 +11,7 @@ public class MonteCarloGenerator {
 
         double dropsInCircle = 0;
         for (long i = 0; i < totalDrops; i++) {
-            if (isDropInCircle(Math.random(), Math.random()))
+            if (isDropInCircle(ThreadLocalRandom.current().nextDouble(), ThreadLocalRandom.current().nextDouble()))
                 dropsInCircle++;
         }
         double pi = dropsInCircle * 4 / totalDrops;
