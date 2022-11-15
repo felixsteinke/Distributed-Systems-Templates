@@ -1,5 +1,37 @@
 # Distributed System Demos
 
+## 📂 [Java Reactive (Publish/Subscriber)](JavaReactive_PubSub/src/main/java)
+
+<details>
+  <summary>Output</summary>
+
+```log
+Subscriber2: Waiting 200ms
+Subscriber1 received: 1
+Subscriber1 received: x
+Subscriber1 received: 2
+Subscriber1 received: x
+Subscriber1 received: 3
+Subscriber1 received: x
+Subscriber2 received: 1
+Subscriber2: Waiting 200ms
+Subscriber2 received: x
+Subscriber2: Waiting 200ms
+Subscriber2 received: 2
+Subscriber2: Waiting 200ms
+Subscriber2 received: x
+Subscriber2: Waiting 200ms
+Publisher: Closing
+Subscriber1 closes after 6 consumed items.
+```
+
+</details>
+
+__System Requirements:__
+
+* Java
+* Maven
+
 ## 📂 [Java RMI](JavaRMI/src/main/java)
 
 The [Server](JavaRMI/src/main/java/server_module/Server.java) provides a __skeleton__ with an

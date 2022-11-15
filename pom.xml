@@ -20,5 +20,6 @@
         <module>MqttController</module>
         <module>REST_API</module>
         <module>REST_Microservices</module>
+        <module>JavaReactive_PubSub</module>
     </modules>
 </project>
